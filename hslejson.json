@@ -1,0 +1,44 @@
+{
+    "topics": [
+        {
+            "id": "thema_1",
+            "title": "Video in der Lehre",
+            "type": "Thema",
+            "url": "https://inside.fhnw.ch/hsle2025/Seiten/Video_In_Der_Lehre.aspx",
+            "scenarios" : [ "scenario_1", "scenario_2"]
+        },
+        {
+            "id": "thema_2",
+            "title": "Videokonferenzen",
+            "type": "Thema",
+            "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
+            "scenarios": [ "scenario_2"],
+            "tools" : [ "tool_1" ]
+        }
+    ],
+    "scenarios": [
+        {
+            "id" : "scenario_1",
+            "title": "Blended Learning",
+            "type": "scenario",
+            "url": "...",
+            "topics" : [ "thema_1" ]
+        },
+        {
+            "id": "scenario_2",
+            "title": "Webinar",
+            "type": "scenario",
+            "url": "...",
+            "topics" : [ "thema_1" , "thema_2"],
+            "tools" : [ "tool_1 "]
+        }
+    ],
+    "tools": [
+        {
+            "id" : "tool_1",
+            "title": "SwitchVideoConferenceTool",
+            "type": "tool",
+            "url": "..."
+        }
+    ]
+}

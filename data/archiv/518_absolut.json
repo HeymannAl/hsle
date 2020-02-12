@@ -1,0 +1,113 @@
+{  
+   "vizLib":"pyramid",
+   "customWidth":950,
+   "customHeight":360,
+   "defaultCenter":340,
+   "defaultCenterDelta": 10,
+
+   "chartDirection":"X",
+   "chartObjectTypeOrientation":"0",
+   "symbolShape":"circle",
+   "symbolType":"5",
+   
+   "chartTypeDetail": "",
+   "numberOfDetails":3,
+
+   "wrapText":100,
+   "defaultTextLength":10,
+   "textAnchorDesc":"middle",
+   "alignmentBaselineDesc":"before-edge",
+   "deltaTextAnchor": 20,
+   "deltaTextAnchor2": 0,
+
+   "formatValue":10,
+   "objectsColumnsPerCategory":4,
+   "spacesAfterXObjects":20,
+   "paddingC":20,
+   "paddingLineSpaces":30,
+   "paddingColumnSpaces":10,
+	
+   "caption":"detail",
+   "textCaptionBefore":"",
+   "textCaptionAfter":"befragte Personen des Alters-Surveys",
+   "captionX":400,
+   "captionY":10,
+   
+   "categoryStatusRotation": 0,
+   
+   "categoryTypeOne":"",
+   "categoryOne":[  
+      {  
+         "id":"0",
+         "status":"50-64 Jährige",
+         "valueDetails":[  
+            {  
+               "value":33,
+               "id":0,
+               "type":"sehr zufrieden",
+               "color":"purple-primary-0"
+            },
+            {  
+               "value":232,
+               "id":1,
+               "type":"zufrieden",
+               "color":"purple-primary-1"
+            },
+            {  
+               "value":99,
+               "id":2,
+               "type":"weniger/nicht zufrieden",
+               "color":"purple-primary-4"
+            }
+         ]
+      },
+      {  
+         "id":"1",
+         "status":"65-75 Jährige",
+         "valueDetails":[  
+            {  
+                "value":67,
+                "id":0,
+                "type":"sehr zufrieden",
+                "color":"purple-primary-0"
+             },
+             {  
+                "value":406,
+                "id":1,
+                "type":"zufrieden",
+                "color":"purple-primary-1"
+             },
+             {  
+                "value":122,
+                "id":2,
+                "type":"weniger/nicht zufrieden",
+                "color":"purple-primary-4"
+             }
+         ]
+      },
+      {  
+         "id":"2",
+         "status":"75+ Jährige",
+         "valueDetails":[  
+            {  
+                "value":20,
+                "id":0,
+                "type":"sehr zufrieden",
+                "color":"purple-primary-0"
+             },
+             {  
+                "value":123,
+                "id":1,
+                "type":"zufrieden",
+                "color":"purple-primary-1"
+             },
+             {  
+                "value":48,
+                "id":2,
+                "type":"weniger/nicht zufrieden",
+                "color":"purple-primary-4"
+             }
+         ]
+      }
+   ]
+}
