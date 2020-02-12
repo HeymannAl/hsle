@@ -99,8 +99,9 @@ $(document).ready(function() {
 
             //var nSubBubble = Math.floor(root.children[iB].children.length/2.0);
 
+
             childBubbles.append("circle")
-                .attr("class", "childBubble" + iB)
+                .attr("class", "childBubble" + iB +" childBubble" )
                 .attr("id", function (d, i) {
                     return "childBubble_" + iB + "sub_" + i;
                 })
@@ -117,7 +118,6 @@ $(document).ready(function() {
                 .style("opacity", 0.5)
                 .style("fill", "#eee")
                 .on("mouseover", function (d, i) {
-                    //window.alert("say something");
                     var noteText = "";
                     if (d.note == null || d.note == "") {
                         noteText = d.address;
@@ -126,12 +126,6 @@ $(document).ready(function() {
                     }
                     d3.select("#bubbleItemNote").text(noteText);
                 })
-
-                // .append("svg:title")
-                // .text(function (d) {
-                //     return d.address;
-                // });
-
             childBubbles.append("text")
                 .attr("class", "childBubbleText" + iB)
                 .attr("x", function (d, i) {
@@ -152,9 +146,12 @@ $(document).ready(function() {
                 .text(function (d) {
                     return d.title
                 })
+                // .append("svg:title")
+                // .text(function (d) {
+                //     return d.address;
+                // });
 
-
-           /* childBubbles.each(function (d, isB) {
+            childBubbles.each(function (d, isB) {
                    d3.select(this).selectAll('.subchildBubble')
                        .data(root[iB].children[isB].attr[0].topics)
                         .enter()
@@ -163,16 +160,21 @@ $(document).ready(function() {
                                     .attr("id", function (data, i) {
                                         return "subchildBubble_" + iB + "sub_" + i;
                                     })
-                                    .attr("r", function (data) {
+                                    .attr("r", function (d) {
                                         return oR / 5.0;
                                     })
-                                    .attr("cx", function (data, i) {
-                                        return (oR / 3.0 * (5 * (iB + 1) - 1) + oR / 3.0 * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
+                                    .attr("cx", function (d) {
+                                        let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
+                                        return parentXValue;
                                     })
-                                    .attr("cy", function (data, i) {
-                                        return ((h + oR / 3.0) / 3 + oR / 3.0 * 1.5 * Math.sin((iB - 1) * 45 / 180 * 3.1415926));
-                                    })
-                })*/
+                                    .attr("cy", function (d) {
+                                      let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                                        return parentYValue;
+                                          })
+                       .attr("cursor", "pointer")
+                               .style("opacity", 0.5)
+                                .style("fill", "#eee")
+                })
                 /*.on("click", function (d, i) {
                     window.open(d.address);
                 });*/
