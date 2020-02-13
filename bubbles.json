@@ -6,14 +6,14 @@
         "title": "Videokonferenzen",
         "type": "Thema",
         "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
-        "attr": [{ "topics" : [ "thema_3"]}]
+        "attr": [{ "topics" : ["thema_2", "thema_2"]}]
       },
       {
         "id": "thema_2",
         "title": "Video",
         "type": "Thema",
         "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
-        "attr": [{ "topics" : [ "thema_4" , "thema_2"],"tools":["tool_2"]}]
+        "attr": [{ "topics" : [ "thema_1" , "thema_2"],"tools":["tool_2"]}]
       }
     ]},
   {"name": "Szenarien", "description": "Virtual Lab of Global Agriculture",
@@ -30,7 +30,7 @@
         "title": "Webinar",
         "type": "scenario",
         "url": "...",
-        "attr": [{ "topics" : [ "thema_3"],"tools":["tool_2"]}]
+        "attr": [{ "topics" : [ "thema_1"],"tools":["tool_2"]}]
       }
     ]},
   {"name":"Tools", "description":"Profiles of Country",
@@ -40,6 +40,6 @@
         "title": "SwitchVideoConferenceTool",
         "type": "tool",
         "url": "...",
-        "attr": [{ "topics" : [ "thema_1" , "thema_2"]}]
+        "attr": [{ "topics" : [ "thema_1" ]}]
       }
     ]}]

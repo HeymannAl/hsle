@@ -12,9 +12,9 @@ $(document).ready(function() {
         .attr("class", "mainBubbleSVG")
         .attr("width", w)
         .attr("height", h)
-        .on("mouseleave", function () {
-            return resetBubbles();
-        });
+        // .on("mouseleave", function () {
+        //     return resetBubbles();
+        // });
 
     var mainNote = svg.append("text")
         .attr("id", "bubbleItemNote")
@@ -65,9 +65,9 @@ $(document).ready(function() {
                 return colVals(i);
             }) // #1f77b4
             .style("opacity", 0.3)
-            .on("mouseover", function (d, i) {
-                return activateBubble(d, i);
-            });
+            // .on("mouseover", function (d, i) {
+            //     return activateBubble(d, i);
+            // });
 
 
         bubbleObj.append("text")
@@ -86,9 +86,9 @@ $(document).ready(function() {
             .text(function (d) {
                 return d.name
             })
-            .on("mouseover", function (d, i) {
-                return activateBubble(d, i);
-            });
+            // .on("mouseover", function (d, i) {
+            //     return activateBubble(d, i);
+            // });
 
 
         for (var iB = 0; iB < nTop; iB++) {
@@ -117,15 +117,15 @@ $(document).ready(function() {
                 .attr("cursor", "pointer")
                 .style("opacity", 0.5)
                 .style("fill", "#eee")
-                .on("mouseover", function (d, i) {
-                    var noteText = "";
-                    if (d.note == null || d.note == "") {
-                        noteText = d.address;
-                    } else {
-                        noteText = d.note;
-                    }
-                    d3.select("#bubbleItemNote").text(noteText);
-                })
+                // .on("mouseover", function (d, i) {
+                //     var noteText = "";
+                //     if (d.note == null || d.note == "") {
+                //         noteText = d.address;
+                //     } else {
+                //         noteText = d.note;
+                //     }
+                //     d3.select("#bubbleItemNote").text(noteText);
+                // })
             childBubbles.append("text")
                 .attr("class", "childBubbleText" + iB)
                 .attr("x", function (d, i) {
@@ -162,6 +162,7 @@ $(document).ready(function() {
                                     })
                                     .attr("r", function (d) {
                                         return oR / 5.0;
+                                        console.log(d);
                                     })
                                     .attr("cx", function (d) {
                                         let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
@@ -174,108 +175,49 @@ $(document).ready(function() {
                        .attr("cursor", "pointer")
                                .style("opacity", 0.5)
                                 .style("fill", "#eee")
-                })
-                /*.on("click", function (d, i) {
-                    window.open(d.address);
-                });*/
-            // nTopChildren = root[iB].children;
-            //
-            //   //  if (root[iB].children[0].attr){
-            //      //   for (var isB = 0; isB < nTopChildren.length; isB++) {
-            //
-            //             childBubbles.append("circle")
-            //                 .attr("class", "subchildBubble" + iB)
-            //                 .attr("id", function (data, i) {
-            //                     console.log(data);
-            //                     return "subchildBubble_" + iB + "sub_" + i;
-            //                 })
-            //                 .attr("r", function (data) {
-            //                     return oR / 5.0;
-            //                 })
-            //                 .attr("cx", function (data, i) {
-            //                     return (oR / 3.0 * (3 * (iB + 1) - 1) + oR / 3.0 * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-            //                 })
-            //                 .attr("cy", function (data, i) {
-            //                     return ((h + oR / 3.0) / 3 + oR / 3.0 * 1.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-            //                 })
-            //                 .attr("cursor", "pointer")
-            //                 .style("opacity", 0.5)
-            //                 .style("fill", "#eee")
-                  //  }
-
-           //     }
 
 
+            })
+
+            childBubbles.each(function (d, isB) {
+                d3.select(this).selectAll('.topBubbleText')
+                    .data(root[iB].children[isB].attr[0].topics)
+                    .enter()
+                    .append("text")
+                    .attr("class", "topBubbleText")
+                    .attr("x", function (d, i) {
+                        let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
+                        return parentXValue;
+                    })
+                    .attr("y", function (d, i)
+                        {
+                            let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                            return parentYValue;
+                        }
+                        )
+                    .style("fill", function (d, i) {
+                        return colVals(i);
+                    }) // #1f77b4
+                    .attr("font-size", 30)
+                    .attr("text-anchor", "middle")
+                    .attr("dominant-baseline", "middle")
+                    .attr("alignment-baseline", "middle")
+                    .text(function (d, i) {
+                    let title;
+                        $.grep(root[0].children, function(e){
+                            if (d === e.id){
+                                title = e.title;
+                                console.log('title'+title);
+                            }
+                        });
+                        return title;
+                    })
+                    // .on("mouseover", function (d, i) {
+                    //     return activateBubble(d, i);
+                    // });
+            })
 
 
-
-            /*   for (var iBC = 0; iBC < nTopChildren; iB++) {
-
-                   var childBubbles = svg.selectAll(".childBubble" + iB)
-                       .data(root[iB].children[0].attr)
-                       .enter().append("g");
-
-                   //var nSubBubble = Math.floor(root.children[iB].children.length/2.0);
-
-                   childBubbles.append("circle")
-                       .attr("class", "childBubble" + iBC)
-                       .attr("id", function (d, i) {
-                           return "childBubble_" + iB + "sub_" + i;
-                       })
-                       .attr("r", function (d) {
-                           return oR / 3.0;
-                       })
-                       .attr("cx", function (d, i) {
-                           return (oR * (3 * (iB + 1) - 1) + oR * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-                       })
-                       .attr("cy", function (d, i) {
-                           return ((h + oR) / 3 + oR * 1.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-                       })
-                       .attr("cursor", "pointer")
-                       .style("opacity", 0.5)
-                       .style("fill", "#eee")
-                       .on("click", function (d, i) {
-                           window.open(d.address);
-                       })
-                       .on("mouseover", function (d, i) {
-                           //window.alert("say something");
-                           var noteText = "";
-                           if (d.note == null || d.note == "") {
-                               noteText = d.address;
-                           } else {
-                               noteText = d.note;
-                           }
-                           d3.select("#bubbleItemNote").text(noteText);
-                       })
-                       .append("svg:title")
-                       .text(function (d) {
-                           return d.address;
-                       });
-
-                   childBubbles.append("text")
-                       .attr("class", "childBubbleText" + iB)
-                       .attr("x", function (d, i) {
-                           return (oR * (3 * (iBC + 1) - 1) + oR * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-                       })
-                       .attr("y", function (d, i) {
-                           return ((h + oR) / 3 + oR * 1.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-                       })
-                       .style("opacity", 0.5)
-                       .attr("text-anchor", "middle")
-                       .style("fill", function (d, i) {
-                           return colVals(iBC);
-                       }) // #1f77b4
-                       .attr("font-size", 6)
-                       .attr("cursor", "pointer")
-                       .attr("dominant-baseline", "middle")
-                       .attr("alignment-baseline", "middle")
-                       .text(function (d) {
-                           return d.title
-                       })
-                       .on("click", function (d, i) {
-                           window.open(d.address);
-                       });
-               }*/
 
         }
 
