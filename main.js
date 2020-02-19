@@ -1,22 +1,24 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    var w = window.innerWidth * 0.68 * 0.95;
-    var h = Math.ceil(w * 0.7);
-    var oR = 0;
-    var nTop = 0;
-    var nTopChildren = 0;
-    var svgContainer = d3.select("#mainBubble")
+    let w = window.innerWidth * 0.68 * 0.95;
+    let h = Math.ceil(w * 0.7);
+    let oR = 0;
+    let nTop = 0;
+    let nTopChildren = 0;
+    let attr = ['topics', 'scenarios', 'tools'];
+
+    let svgContainer = d3.select("#mainBubble")
         .style("height", h + "px");
 
-    var svg = d3.select("#mainBubble").append("svg")
+    let svg = d3.select("#mainBubble").append("svg")
         .attr("class", "mainBubbleSVG")
         .attr("width", w)
         .attr("height", h)
-        // .on("mouseleave", function () {
-        //     return resetBubbles();
-        // });
+    // .on("mouseleave", function () {
+    //     return resetBubbles();
+    // });
 
-    var mainNote = svg.append("text")
+    let mainNote = svg.append("text")
         .attr("id", "bubbleItemNote")
         .attr("x", 10)
         .attr("y", w / 2 - 15)
@@ -30,16 +32,16 @@ $(document).ready(function() {
 
 
     d3.json("bubbles.json", function (error, root) {
-        console.log(error);
+        //  console.log(error);
 
-        var bubbleObj = svg.selectAll(".topBubble")
+        let bubbleObj = svg.selectAll(".topBubble")
             .data(root)
             .enter().append("g")
             .attr("id", function (d, i) {
                 return "topBubbleAndText_" + i
             });
 
-        console.log(root);
+        //  console.log(root);
         nTop = root.length;
 
         oR = w / (1 + 3 * nTop);
@@ -47,7 +49,7 @@ $(document).ready(function() {
         h = Math.ceil(w / nTop * 2);
         svgContainer.style("height", h + "px");
 
-        var colVals = d3.scaleOrdinal(d3.schemeCategory10);
+        let colVals = d3.scaleOrdinal(d3.schemeCategory10);
 
         bubbleObj.append("circle")
             .attr("class", "topBubble")
@@ -65,9 +67,9 @@ $(document).ready(function() {
                 return colVals(i);
             }) // #1f77b4
             .style("opacity", 0.3)
-            // .on("mouseover", function (d, i) {
-            //     return activateBubble(d, i);
-            // });
+        // .on("mouseover", function (d, i) {
+        //     return activateBubble(d, i);
+        // });
 
 
         bubbleObj.append("text")
@@ -86,22 +88,22 @@ $(document).ready(function() {
             .text(function (d) {
                 return d.name
             })
-            // .on("mouseover", function (d, i) {
-            //     return activateBubble(d, i);
-            // });
+        // .on("mouseover", function (d, i) {
+        //     return activateBubble(d, i);
+        // });
 
 
-        for (var iB = 0; iB < nTop; iB++) {
+        for (let iB = 0; iB < nTop; iB++) {
 
-            var childBubbles = svg.selectAll(".childBubble" + iB)
+            let childBubbles = svg.selectAll(".childBubble" + iB)
                 .data(root[iB].children)
                 .enter().append("g");
 
-            //var nSubBubble = Math.floor(root.children[iB].children.length/2.0);
+            //let nSubBubble = Math.floor(root.children[iB].children.length/2.0);
 
 
             childBubbles.append("circle")
-                .attr("class", "childBubble" + iB +" childBubble" )
+                .attr("class", "childBubble" + iB + " childBubble")
                 .attr("id", function (d, i) {
                     return "childBubble_" + iB + "sub_" + i;
                 })
@@ -117,15 +119,15 @@ $(document).ready(function() {
                 .attr("cursor", "pointer")
                 .style("opacity", 0.5)
                 .style("fill", "#eee")
-                // .on("mouseover", function (d, i) {
-                //     var noteText = "";
-                //     if (d.note == null || d.note == "") {
-                //         noteText = d.address;
-                //     } else {
-                //         noteText = d.note;
-                //     }
-                //     d3.select("#bubbleItemNote").text(noteText);
-                // })
+            // .on("mouseover", function (d, i) {
+            //     let noteText = "";
+            //     if (d.note == null || d.note == "") {
+            //         noteText = d.address;
+            //     } else {
+            //         noteText = d.note;
+            //     }
+            //     d3.select("#bubbleItemNote").text(noteText);
+            // })
             childBubbles.append("text")
                 .attr("class", "childBubbleText" + iB)
                 .attr("x", function (d, i) {
@@ -146,81 +148,105 @@ $(document).ready(function() {
                 .text(function (d) {
                     return d.title
                 })
-                // .append("svg:title")
-                // .text(function (d) {
-                //     return d.address;
-                // });
+            // .append("svg:title")
+            // .text(function (d) {
+            //     return d.address;
+            // });
 
             childBubbles.each(function (d, isB) {
-                   d3.select(this).selectAll('.subchildBubble')
-                       .data(root[iB].children[isB].attr[0].topics)
-                        .enter()
-                        .append("circle")
-                                    .attr("class", "subchildBubble" + isB)
-                                    .attr("id", function (data, i) {
-                                        return "subchildBubble_" + iB + "sub_" + i;
-                                    })
-                                    .attr("r", function (d) {
-                                        return oR / 5.0;
-                                        console.log(d);
-                                    })
-                                    .attr("cx", function (d) {
-                                        let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                                        return parentXValue;
-                                    })
-                                    .attr("cy", function (d) {
-                                      let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                                        return parentYValue;
-                                          })
-                       .attr("cursor", "pointer")
-                               .style("opacity", 0.5)
-                                .style("fill", "#eee")
 
+                for (let i = 0; i < attr.length; i++) {
+                    if ((root[iB].children[isB].attr[0][attr[i]] == null)||(root[iB].children[isB].attr[0][attr[i]] == 'undefined'))
+                    {
+
+                      //  console.log(root[iB].children[isB].attr[0][attr[i]] );
+                    }
+                    else{
+                        d3.select(this).selectAll('.subchildBubble')
+                            .data(root[iB].children[isB].attr[0][attr[i]])
+                            .enter()
+                            .append("circle")
+                            .attr("class", "subchildBubble" + isB)
+                            .attr("id", function (data, i) {
+                                return "subchildBubble_" + iB + "sub_" + i;
+                            })
+                            .attr("r", function (d) {
+                                return oR / 5.0;
+                            })
+                            .attr("cx", function (d) {
+                                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
+                                return parentXValue;
+                            })
+                            .attr("cy", function (d) {
+                                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                                return parentYValue;
+                            })
+                            .attr("cursor", "pointer")
+                            .style("opacity", 0.5)
+                            .style("fill", "#eee")
+                    }
+
+                }
 
             })
 
             childBubbles.each(function (d, isB) {
-                d3.select(this).selectAll('.topBubbleText')
-                    .data(root[iB].children[isB].attr[0].topics)
-                    .enter()
-                    .append("text")
-                    .attr("class", "topBubbleText")
-                    .attr("x", function (d, i) {
-                        let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                        return parentXValue;
-                    })
-                    .attr("y", function (d, i)
-                        {
-                            let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                            return parentYValue;
-                        }
-                        )
-                    .style("fill", function (d, i) {
-                        return colVals(i);
-                    }) // #1f77b4
-                    .attr("font-size", 30)
-                    .attr("text-anchor", "middle")
-                    .attr("dominant-baseline", "middle")
-                    .attr("alignment-baseline", "middle")
-                    .text(function (d, i) {
-                    let title;
-                        $.grep(root[0].children, function(e){
-                            if (d === e.id){
-                                title = e.title;
-                                console.log('title'+title);
-                            }
+
+                for (let j = 0; j < attr.length; j++) {
+                    console.log(root[iB].children[isB].attr[0][attr[j]]);
+                    if ((root[iB].children[isB].attr[0][attr[j]] == null) || (root[iB].children[isB].attr[0][attr[j]] == 'undefined')) {
+                        //  console.log(root[iB].children[isB].attr[0][attr[i]] );
+                    } else {
+                        d3.select(this).selectAll('.test')
+                            .data(root[iB].children[isB].attr[0][attr[j]])
+                            .enter()
+                            .append("text")
+                            .attr("class", "test" + isB)
+                            .attr("id", function (data, i) {
+                                return "subchildBubble_" + iB + "sub_" + i;
+                            })
+
+                            .attr("cursor", "pointer")
+                            .style("opacity", 0.5)
+                            .style("fill", "#eee")
+
+                            .attr("x", function (d, i) {
+                                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
+                                return parentXValue;
+                            })
+                            .attr("y", function (d, i) {
+                                    let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                                    return parentYValue;
+                                }
+                            )
+                            .style("fill", function (d, i) {
+                                return colVals(i);
+                            }) // #1f77b4
+                            .attr("font-size", 30)
+                            .attr("text-anchor", "middle")
+                            .attr("dominant-baseline", "middle")
+                            .attr("alignment-baseline", "middle")
+                        .text(function (d) {
+                            let title;
+                            $.grep(root[j].children, function (e) {
+                                if (d === e.id) {
+                                    title = e.title;
+
+                                }
+                            });
+                            return title;
+                        })
+                        .on("mouseover", function (d, i) {
+                            return activateBubble(d, i);
                         });
-                        return title;
-                    })
-                    // .on("mouseover", function (d, i) {
-                    //     return activateBubble(d, i);
-                    // });
-            })
 
+
+                    }
+                }
+            })
 
 
         }
-
 
 
     });
@@ -240,7 +266,7 @@ $(document).ready(function() {
 
         d3.select("#bubbleItemNote").text("");
 
-        var t = svg.transition()
+        let t = svg.transition()
             .duration(650);
 
         t.selectAll(".topBubble")
@@ -259,7 +285,7 @@ $(document).ready(function() {
             })
             .attr("y", (h + oR) / 3);
 
-        for (var k = 0; k < nTop; k++) {
+        for (let k = 0; k < nTop; k++) {
             t.selectAll(".childBubbleText" + k)
                 .attr("x", function (d, i) {
                     return (oR * (3 * (k + 1) - 1) + oR * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
@@ -288,7 +314,7 @@ $(document).ready(function() {
 
     function activateBubble(d, i) {
         // increase this bubble and decrease others
-        var t = svg.transition()
+        let t = svg.transition()
             .duration(d3.event.altKey ? 7500 : 350);
 
         t.selectAll(".topBubble")
@@ -337,8 +363,8 @@ $(document).ready(function() {
                     return 30 * 0.6;
             });
 
-        var signSide = -1;
-        for (var k = 0; k < nTop; k++) {
+        let signSide = -1;
+        for (let k = 0; k < nTop; k++) {
             signSide = 1;
             if (k < nTop / 2) signSide = 1;
             t.selectAll(".childBubbleText" + k)

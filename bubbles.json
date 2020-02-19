@@ -1,45 +1,52 @@
 [
-  {"name":"Themen","description":"Atlas of Global Agriculture",
+  {"name":"topics","description":"Themen",
     "children":[
       {
         "id": "thema_1",
         "title": "Videokonferenzen",
         "type": "Thema",
         "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
-        "attr": [{ "topics" : ["thema_2", "thema_2"]}]
+        "attr": [{ "topics" : [ "thema_1" ],"scenarios":["scenario_1", "scenario_2"],"tools":["tool_1", "tool_2"]}]
       },
       {
         "id": "thema_2",
         "title": "Video",
         "type": "Thema",
         "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
-        "attr": [{ "topics" : [ "thema_1" , "thema_2"],"tools":["tool_2"]}]
+        "attr": [{ "topics" : [ "thema_1" , "thema_2"],"tools":["tool_1", "tool_2"]}]
       }
     ]},
-  {"name": "Szenarien", "description": "Virtual Lab of Global Agriculture",
+  {"name": "scenarios", "description": "Szenarien",
     "children":[
       {
         "id" : "scenario_1",
         "title": "Blended Learning",
         "type": "scenario",
         "url": "...",
-        "attr": [{ "topics" : [ "thema_1" , "thema_2"],"tools":["tool_2"]}]
+        "attr": [{ "topics" : [ "thema_1" , "thema_2"],"tools":["tool_1"]}]
       },
       {
         "id": "scenario_2",
         "title": "Webinar",
         "type": "scenario",
         "url": "...",
-        "attr": [{ "topics" : [ "thema_1"],"tools":["tool_2"]}]
+        "attr": [{ "topics" : [ "thema_1"],"tools":["tool_1"]}]
       }
     ]},
-  {"name":"Tools", "description":"Profiles of Country",
+  {"name":"tools", "description":"Tools",
     "children":[
       {
         "id" : "tool_1",
         "title": "SwitchVideoConferenceTool",
         "type": "tool",
         "url": "...",
-        "attr": [{ "topics" : [ "thema_1" ]}]
+        "attr": [{ "topics" : [ "thema_1" ],"tools":["tool_1"]}]
+      },
+      {
+        "id" : "tool_2",
+        "title": "Tool2",
+        "type": "tool",
+        "url": "...",
+        "attr": [{ "topics" : [ "thema_1" ],"tools":["tool_1"]}]
       }
     ]}]

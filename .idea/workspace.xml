@@ -16,15 +16,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DockManager">
-    <window id="2">
+    <window id="1">
       <content type="file-editors">
         <state>
-          <leaf>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/bubbles.json">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="567">
-                    <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+                  <state relative-caret-position="168">
+                    <caret line="8" column="82" selection-start-line="8" selection-start-column="82" selection-end-line="8" selection-end-column="82" />
                   </state>
                 </provider>
               </entry>
@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="193" column="91" selection-start-line="193" selection-start-column="91" selection-end-line="193" selection-end-column="91" />
+            <state relative-caret-position="777">
+              <caret line="230" column="41" selection-start-line="230" selection-start-column="41" selection-end-line="230" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -56,9 +56,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sem</find>
-      <find>Gon</find>
-      <find>2019</find>
       <find>20</find>
       <find>19</find>
       <find>2018</find>
@@ -78,7 +75,6 @@
       <find>nodeLabelGroup</find>
       <find>json</find>
       <find>categor</find>
-      <find>console</find>
       <find>opaci</find>
       <find>nTopChildren</find>
       <find>iB</find>
@@ -86,6 +82,10 @@
       <find>console.log</find>
       <find>over</find>
       <find>leave</find>
+      <find>topics</find>
+      <find>topic</find>
+      <find>tools</find>
+      <find>console</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,10 +121,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1841" />
-    <option name="y" value="74" />
-    <option name="width" value="1934" />
-    <option name="height" value="1047" />
+    <option name="width" value="5780" />
+    <option name="height" value="1220" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -190,17 +188,18 @@
       <workItem from="1581340764261" duration="599000" />
       <workItem from="1581430115364" duration="27000" />
       <workItem from="1581499368545" duration="32387000" />
+      <workItem from="1582113180001" duration="2641000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110214000" />
+    <option name="totallyTimeSpent" value="117265000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1841" y="74" width="1934" height="1047" extended-state="0" />
+    <frame x="0" y="0" width="5780" height="1220" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1646309" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.051492408" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -212,7 +211,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.05226481" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.084139265" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -279,24 +278,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bubbles_old.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/bubbles_old.json" />
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="193" column="91" selection-start-line="193" selection-start-column="91" selection-end-line="193" selection-end-column="91" />
+        <state relative-caret-position="777">
+          <caret line="230" column="41" selection-start-line="230" selection-start-column="41" selection-end-line="230" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bubbles.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="34" column="7" lean-forward="true" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+        <state relative-caret-position="168">
+          <caret line="8" column="82" selection-start-line="8" selection-start-column="82" selection-end-line="8" selection-end-column="82" />
         </state>
       </provider>
     </entry>
