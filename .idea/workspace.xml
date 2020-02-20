@@ -23,8 +23,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/bubbles.json">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="168">
-                    <caret line="8" column="82" selection-start-line="8" selection-start-column="82" selection-end-line="8" selection-end-column="82" />
+                  <state relative-caret-position="147">
+                    <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
                   </state>
                 </provider>
               </entry>
@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="230" column="41" selection-start-line="230" selection-start-column="41" selection-end-line="230" selection-end-column="41" />
+            <state relative-caret-position="148">
+              <caret line="212" column="5" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -56,36 +56,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>20</find>
-      <find>19</find>
-      <find>2018</find>
-      <find>18</find>
-      <find>alert</find>
-      <find>ech</find>
-      <find>optionSem</find>
-      <find>ITEM</find>
-      <find>updateNavi</find>
-      <find>addNodeLabel</find>
-      <find>related</find>
-      <find>24</find>
-      <find>currentNode</find>
-      <find>dataAll</find>
-      <find>click</find>
-      <find>drawCir</find>
-      <find>nodeLabelGroup</find>
-      <find>json</find>
-      <find>categor</find>
       <find>opaci</find>
       <find>nTopChildren</find>
       <find>iB</find>
-      <find>nTop</find>
       <find>console.log</find>
       <find>over</find>
-      <find>leave</find>
       <find>topics</find>
       <find>topic</find>
       <find>tools</find>
       <find>console</find>
+      <find>colVa</find>
+      <find>return root.color;</find>
+      <find>text</find>
+      <find>mouse</find>
+      <find>activ</find>
+      <find>childre</find>
+      <find>activateSub</find>
+      <find>activateBu</find>
+      <find>childBubbleText</find>
+      <find>this</find>
+      <find>Bubb</find>
+      <find>nTop</find>
+      <find>nTopCh</find>
+      <find>subchildBubble</find>
+      <find>reset</find>
+      <find>title</find>
+      <find>childBubble</find>
+      <find>activateSubBubble</find>
+      <find>activate</find>
+      <find>leave</find>
+      <find>opacity</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,14 +115,16 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/bubbles_old.json" />
-        <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/bubbles.json" />
+        <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="width" value="5780" />
-    <option name="height" value="1220" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="3" />
+    <option name="y" value="26" />
+    <option name="width" value="1886" />
+    <option name="height" value="1021" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -151,10 +153,10 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\hsle" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\hsle" />
     </key>
   </component>
@@ -193,13 +195,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117265000" />
+    <option name="totallyTimeSpent" value="138006000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="5780" height="1220" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.051492408" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15649867" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -211,7 +213,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.084139265" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3908046" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -279,17 +281,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bubbles_old.json" />
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/bubbles.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="230" column="41" selection-start-line="230" selection-start-column="41" selection-end-line="230" selection-end-column="41" />
+        <state relative-caret-position="147">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bubbles.json">
+    <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="82" selection-start-line="8" selection-start-column="82" selection-end-line="8" selection-end-column="82" />
+        <state relative-caret-position="148">
+          <caret line="212" column="5" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
         </state>
       </provider>
     </entry>
