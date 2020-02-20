@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     let w = window.innerWidth * 0.7 * 0.98;
     let h = Math.ceil(w * 0.7);
     let oR = 0;
@@ -124,11 +123,14 @@ $(document).ready(function () {
                 .on("mouseover", function (d, i) {
                     d3.selectAll(".subchildBubble").style('display', 'none');
                     d3.selectAll(".subchildBubbleText").style('display', 'none');
+                    d3.selectAll(".childBubbleText").style("font-weight", '300');
                     let elem = d3.select(this.parentNode).selectAll(".subchildBubble");
                     elem.style('display', 'block');
                     let elemtext = d3.select(this.parentNode).selectAll(".subchildBubbleText");
                     elemtext.style('display', 'block');
-                  //  activateBubble(d, i);
+                    d3.selectAll(".childBubble").style("opacity", '0.3');
+                    d3.select(this.parentNode).selectAll(".childBubble").style("opacity", '1');
+                    d3.select(this.parentNode).selectAll(".childBubbleText").style("font-weight", '700');
                 })
                 .on("mouseleave", function (d, i) {
 
@@ -137,8 +139,8 @@ $(document).ready(function () {
 
                 }).on("click", function(d) { window.open(d.url); });
 
-            childBubbles.append("text")
-                .attr("class", "childBubbleText" + iB)
+                childBubbles.append("text")
+                .attr("class", "childBubbleText childBubbleText" + iB)
                 .attr("x", function (d, i) {
                     return (oR * (3 * (iB + 1) - 1) + oR * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
                 })
@@ -154,7 +156,11 @@ $(document).ready(function () {
                 .attr("alignment-baseline", "middle")
                 .text(function (d) {
                     return d.title
-                }).on("click", function(d) { window.open(d.url); });
+                }).on("mouseover", function (d, i) {
+                    d3.selectAll('.childBubbleText').style("font-weight", '300');
+                    d3.select(this).style("font-weight", '700');
+                })
+                    .on("click", function(d) { window.open(d.url); });
 
             childBubbles.each(function (d, isB) {
 
@@ -205,92 +211,22 @@ $(document).ready(function () {
                             });
                         });
                     }
-
                 }
 
+                let indexTranslate = -100;
+                d3.selectAll('.subchildBubble'+root[iB].children[isB].id).each(function () {
+                    let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
+                    let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                    let cx = Math.round(parentXValue) + 60;
+                    let cy = Math.round(parentYValue) + indexTranslate;
+                    d3.select(this).attr("cx", cx);
+                    d3.select(this).attr("cy", cy);
+                    indexTranslate = indexTranslate + 50;
+                })
             })
-
-
-
-            //_______________________________________________provisorisch make dynamisch!!!
-            let indexTranslate = -100;
-
-            $('.subchildBubblethema_1').each(function () {
-
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslate;
-
-                $(this).attr("cx", cx);
-                $(this).attr("cy", cy);
-                indexTranslate = indexTranslate + 50;
-            })
-            indexTranslate = -100;
-
-
-
-            $('.subchildBubblethema_2').each(function () {
-
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslate;
-
-                $(this).attr("cx", cx);
-                $(this).attr("cy", cy);
-                indexTranslate = indexTranslate + 50;
-            })
-             indexTranslate = -100;
-
-            $('.subchildBubblescenario_1').each(function () {
-
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslate;
-
-                $(this).attr("cx", cx);
-                $(this).attr("cy", cy);
-                indexTranslate = indexTranslate + 50;
-            })
-            indexTranslate = -100;
-            $('.subchildBubblescenario_2').each(function () {
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslate;
-
-                $(this).attr("cx", cx);
-                $(this).attr("cy", cy);
-                indexTranslate = indexTranslate + 50;
-            })
-            indexTranslate = -100;
-            $('.subchildBubbletool_1').each(function () {
-
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslate;
-                $(this).attr("cx", cx);
-                $(this).attr("cy", cy);
-                indexTranslate = indexTranslate + 50;
-            })
-            //---------------------------------> make dynamisch
 
             childBubbles.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
-
                     if ((root[iB].children[isB].attr[0][attr[j]] == null) || (root[iB].children[isB].attr[0][attr[j]] == 'undefined')) {
                         //  console.log(root[iB].children[isB].attr[0][attr[i]] );
                     } else {
@@ -304,15 +240,6 @@ $(document).ready(function () {
                             })
                             .attr("cursor", "pointer")
                             .style("display", 'none')
-                            // .attr("x", function (d, i) {
-                            //     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                            //     return parentXValue;
-                            // })
-                            // .attr("y", function (d, i) {
-                            //         let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                            //         return parentYValue;
-                            //     }
-                            // )
                             .style("fill", '#000000') // #1f77b4
                             .attr("font-size", 10)
                             .attr("text-anchor", "middle")
@@ -338,82 +265,19 @@ $(document).ready(function () {
 
                     }
                 }
+                let indexTranslateText = -100;
+
+                d3.selectAll('.text'+root[iB].children[isB].id).each(function () {
+                    let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
+                    let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                    let cx = Math.round(parentXValue) + 60;
+                    let cy = Math.round(parentYValue) + indexTranslateText;
+                    d3.select(this).attr("x", cx);
+                    d3.select(this).attr("y", cy); console.log(cx);
+                    indexTranslateText =  indexTranslateText + 50;
+
+                })
             })
-            //_______________________________________________provisorisch make dynamisch!!!
-            let indexTranslateText = -100;
-
-            $('.textthema_1').each(function () {
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslateText;
-                $(this).attr("x", cx);
-                $(this).attr("y", cy); console.log(cx);
-                indexTranslateText =  indexTranslateText + 50;
-
-            })
-
-
-            indexTranslateText = -100;
-
-            $('.textthema_2').each(function () {
-
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslateText;
-
-                $(this).attr("x", cx);
-                $(this).attr("y", cy);
-                indexTranslateText = indexTranslateText + 50;
-            })
-            indexTranslateText = -100;
-
-            $('.textscenario_1').each(function () {
-
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslateText;
-
-                $(this).attr("x", cx);
-                $(this).attr("y", cy);
-                indexTranslateText = indexTranslateText + 50;
-            })
-            indexTranslateText = -100;
-            $('.textscenario_2').each(function () {
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslateText;
-
-                $(this).attr("x", cx);
-                $(this).attr("y", cy);
-                indexTranslateText = indexTranslateText + 50;
-            })
-            indexTranslateText = -100;
-            $('.texttool_1').each(function () {
-
-                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                //  $(this).css({transform: 'translate(' + indexTranslate + 'px, 75px' });
-                //  $(this).find('text').css({transform: 'translateY('+indexTranslateText+'px)'});
-                let cx = Math.round(parentXValue) + 60;
-                let cy = Math.round(parentYValue) + indexTranslateText;
-
-                $(this).attr("x", cx);
-                $(this).attr("y", cy);
-                indexTranslateText = indexTranslateText + 50;
-            })
-            //---------------------------------> make dynamisch
 
         }
 
@@ -430,7 +294,6 @@ $(document).ready(function () {
 
         svg.attr("width", w);
         svg.attr("height", h);
-
 
         let t = svg.transition()
             .duration(650);
@@ -486,6 +349,7 @@ $(document).ready(function () {
         d3.event.stopPropagation();
         d3.selectAll(".subchildBubble").style('display', 'none');
         d3.selectAll(".subchildBubbleText").style('display', 'none');
+        d3.selectAll(".subchildBubbleText").style('font-weight', 'normal');
         // increase this bubble and decrease others
         let t = svg.transition()
         .duration(d3.event.altKey ? 7500 : 350);

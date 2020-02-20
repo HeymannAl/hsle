@@ -6,6 +6,7 @@
         "title": "Videokonferenzen",
         "type": "Thema",
         "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
+        "urlgen": "https://inside.fhnw.ch/",
         "attr": [{ "topics" : [ "thema_1" ],"scenarios":["scenario_1", "scenario_2"],"tools":["tool_1"]}]
       },
       {
@@ -40,6 +41,6 @@
         "title": "SwitchVideoConferenceTool",
         "type": "tool",
         "url": "...",
-        "attr": [{ "topics" : [ "thema_1" ],"tools":["tool_1"]}]
+        "attr": [{ "topics" : [ "thema_1" ],"scenarios":["scenario_1", "scenario_2"]}]
       }
     ]}]
