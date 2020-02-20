@@ -1,6 +1,7 @@
 $(document).ready(function () {
+
     let w = window.innerWidth * 0.7 * 0.98;
-    let h = Math.ceil(w * 0.7);
+    let h = Math.ceil(w * 1.5);
     let oR = 0;
     let nTop = 0;
 
@@ -43,7 +44,6 @@ $(document).ready(function () {
         //  console.log(root);
         nTop = root.length;
 
-        console.log(nTop);
         oR = w / (1 + 3 * nTop);
 
         h = Math.ceil(w / nTop * 2);
@@ -213,15 +213,18 @@ $(document).ready(function () {
                     }
                 }
 
-                let indexTranslate = -100;
-                d3.selectAll('.subchildBubble'+root[iB].children[isB].id).each(function () {
+
+                 let angle;
+                 let num = d3.selectAll('.subchildBubble'+root[iB].children[isB].id).size();
+
+                d3.selectAll('.subchildBubble'+root[iB].children[isB].id).each(function (d, i) {
                     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                    let cx = Math.round(parentXValue) + 60;
-                    let cy = Math.round(parentYValue) + indexTranslate;
+                    angle = (i / (num/2)) * Math.PI;
+                    let cx = ((oR  * Math.cos(angle)))+Math.round(parentXValue); // Calculate the x position of the element.
+                    let cy = ((oR  * Math.sin(angle)))+Math.round(parentYValue); // Calculate the y position of the element.
                     d3.select(this).attr("cx", cx);
                     d3.select(this).attr("cy", cy);
-                    indexTranslate = indexTranslate + 50;
                 })
             })
 
@@ -265,17 +268,18 @@ $(document).ready(function () {
 
                     }
                 }
-                let indexTranslateText = -100;
 
-                d3.selectAll('.text'+root[iB].children[isB].id).each(function () {
+                let angle;
+                let num = d3.selectAll('.text'+root[iB].children[isB].id).size();
+                d3.selectAll('.text'+root[iB].children[isB].id).each(function (d, i) {
                     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                    let cx = Math.round(parentXValue) + 60;
-                    let cy = Math.round(parentYValue) + indexTranslateText;
+                    angle = (i / (num/2)) * Math.PI;
+                    console.log('angle', i);
+                    let cx = ((oR  * Math.cos(angle)))+Math.round(parentXValue);
+                    let cy = ((oR  * Math.sin(angle)))+Math.round(parentYValue);
                     d3.select(this).attr("x", cx);
-                    d3.select(this).attr("y", cy); console.log(cx);
-                    indexTranslateText =  indexTranslateText + 50;
-
+                    d3.select(this).attr("y", cy);
                 })
             })
 
@@ -291,9 +295,6 @@ $(document).ready(function () {
         h = Math.ceil(w / nTop * 2);
 
         mainNote.attr("y", h - 15);
-
-        svg.attr("width", w);
-        svg.attr("height", h);
 
         let t = svg.transition()
             .duration(650);
@@ -354,21 +355,21 @@ $(document).ready(function () {
         let t = svg.transition()
         .duration(d3.event.altKey ? 7500 : 350);
         t.selectAll(".topBubble")
-            .attr("cx", function (d, ii) {
-                if (i == ii) {
-                    // Nothing to change
-                    return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
-                } else {
-                    // Push away a little bit
-                    if (ii < i) {
-                        // left side
-                        return oR * 0.6 * (3 * (1 + ii) - 1);
-                    } else {
-                        // right side
-                        return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
-                    }
-                }
-            })
+            // .attr("cx", function (d, ii) {
+            //     if (i == ii) {
+            //         // Nothing to change
+            //         return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
+            //     } else {
+            //         // Push away a little bit
+            //         if (ii < i) {
+            //             // left side
+            //             return oR * 0.6 * (3 * (1 + ii) - 1);
+            //         } else {
+            //             // right side
+            //             return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
+            //         }
+            //     }
+            // })
             .attr("r", function (d, ii) {
                 if (i == ii)
                     return oR * 1.8;
@@ -377,21 +378,21 @@ $(document).ready(function () {
             });
 
         t.selectAll(".topBubbleText")
-            .attr("x", function (d, ii) {
-                if (i == ii) {
-                    // Nothing to change
-                    return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
-                } else {
-                    // Push away a little bit
-                    if (ii < i) {
-                        // left side
-                        return oR * 0.6 * (3 * (1 + ii) - 1);
-                    } else {
-                        // right side
-                        return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
-                    }
-                }
-            })
+            // .attr("x", function (d, ii) {
+            //     if (i == ii) {
+            //         // Nothing to change
+            //         return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
+            //     } else {
+            //         // Push away a little bit
+            //         if (ii < i) {
+            //             // left side
+            //             return oR * 0.6 * (3 * (1 + ii) - 1);
+            //         } else {
+            //             // right side
+            //             return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
+            //         }
+            //     }
+            // })
             .attr("font-size", function (d, ii) {
                 if (i == ii)
                     return 30 * 1.5;
@@ -405,12 +406,12 @@ $(document).ready(function () {
             signSide = 1;
             if (k < nTop / 2) signSide = 1;
             t.selectAll(".childBubbleText" + k)
-                .attr("x", function (d, i) {
-                    return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-                })
-                .attr("y", function (d, i) {
-                    return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-                })
+                // .attr("x", function (d, i) {
+                //     return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
+                // })
+                // .attr("y", function (d, i) {
+                //     return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
+                // })
                 .attr("font-size", function () {
                     return (k == i) ? 12 : 10;
                 })
@@ -419,12 +420,12 @@ $(document).ready(function () {
                 });
 
             t.selectAll(".childBubble" + k)
-                .attr("cx", function (d, i) {
-                    return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-                })
-                .attr("cy", function (d, i) {
-                    return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-                })
+                // .attr("cx", function (d, i) {
+                //     return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
+                // })
+                // .attr("cy", function (d, i) {
+                //     return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
+                // })
                 .attr("r", function () {
                     return (k == i) ? (oR * 0.55) : (oR / 3.0);
                 })

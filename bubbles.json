@@ -6,11 +6,17 @@
         "title": "Videokonferenzen",
         "type": "Thema",
         "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
-        "urlgen": "https://inside.fhnw.ch/",
-        "attr": [{ "topics" : [ "thema_1" ],"scenarios":["scenario_1", "scenario_2"],"tools":["tool_1"]}]
+        "attr": [{ "topics" : [ "thema_2" ],"scenarios":["scenario_1", "scenario_2", "scenario_3", "scenario_4"],"tools":["tool_1"]}]
       },
       {
         "id": "thema_2",
+        "title": "Video",
+        "type": "Thema",
+        "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
+        "attr": [{ "topics" : [ "thema_1"],"tools":["tool_1"]}]
+      },
+      {
+        "id": "thema_3",
         "title": "Video",
         "type": "Thema",
         "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
@@ -32,12 +38,33 @@
         "type": "scenario",
         "url": "...",
         "attr": [{ "topics" : [ "thema_1"],"tools":["tool_1"]}]
+      },
+      {
+        "id": "scenario_3",
+        "title": "Webinar",
+        "type": "scenario",
+        "url": "...",
+        "attr": [{ "topics" : [ "thema_1"],"tools":["tool_1"]}]
+      },
+      {
+        "id": "scenario_4",
+        "title": "Webinar",
+        "type": "scenario",
+        "url": "...",
+        "attr": [{ "topics" : [ "thema_1"],"tools":["tool_1"]}]
       }
     ]},
   {"name":"tools", "description":"Tools","color": "rgb(44, 160, 44)",
     "children":[
       {
         "id" : "tool_1",
+        "title": "SwitchVideoConferenceTool",
+        "type": "tool",
+        "url": "...",
+        "attr": [{ "topics" : [ "thema_1" ],"scenarios":["scenario_1", "scenario_2"]}]
+      },
+      {
+        "id" : "tool_2",
         "title": "SwitchVideoConferenceTool",
         "type": "tool",
         "url": "...",
