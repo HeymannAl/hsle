@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="091cee26-2379-4919-a431-e3267bb19f98" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bub.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bubbles.json" beforeDir="false" afterPath="$PROJECT_DIR$/bubbles.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,32 +17,31 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/bubbles.json">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="457">
-                    <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bubbles.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="9" column="226" lean-forward="true" selection-start-line="9" selection-start-column="208" selection-end-line="9" selection-end-column="226" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="106" column="60" lean-forward="true" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
+            <state relative-caret-position="291">
+              <caret line="270" column="29" selection-start-line="270" selection-start-column="29" selection-end-line="270" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -56,36 +57,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>opaci</find>
-      <find>nTopChildren</find>
-      <find>iB</find>
-      <find>console.log</find>
+      <find>activateBubble</find>
+      <find>resetBu</find>
+      <find>resetBubb</find>
+      <find>cx</find>
+      <find>oR</find>
+      <find>console.log('angle', i);</find>
       <find>over</find>
-      <find>topics</find>
-      <find>topic</find>
-      <find>tools</find>
-      <find>console</find>
-      <find>colVa</find>
-      <find>return root.color;</find>
-      <find>text</find>
-      <find>mouse</find>
-      <find>activ</find>
-      <find>childre</find>
-      <find>activateSub</find>
-      <find>activateBu</find>
-      <find>childBubbleText</find>
-      <find>this</find>
-      <find>Bubb</find>
-      <find>nTop</find>
-      <find>nTopCh</find>
-      <find>subchildBubble</find>
       <find>title</find>
-      <find>activateSubBubble</find>
-      <find>opacity</find>
+      <find>text</find>
+      <find>Label</find>
+      <find>description</find>
+      <find>childBubbleText</find>
       <find>childBubble</find>
-      <find>activate</find>
-      <find>leave</find>
-      <find>reset</find>
+      <find>subchildBubbleText</find>
+      <find>childBubb</find>
+      <find>tspan</find>
+      <find>wrapLabel</find>
+      <find>wrapLab</find>
+      <find>transf</find>
+      <find>parentXValue</find>
+      <find>translate</find>
+      <find>none</find>
+      <find>opacity</find>
+      <find>Nutz</find>
+      <find>SWI</find>
+      <find>display</find>
+      <find>Aufze</find>
+      <find>wrapLabe</find>
+      <find>descr</find>
+      <find>click</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,19 +112,25 @@
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-3/tableview.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-4/information.html" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-4/index.html" />
-        <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/bubbles_old.json" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-3/content.html" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-3/main.js" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-3/navigation.html" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/index.html" />
+        <option value="$PROJECT_DIR$/bub.json" />
+        <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/bubbles.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="1934" />
-    <option name="height" value="1047" />
+    <option name="x" value="20" />
+    <option name="y" value="66" />
+    <option name="width" value="1680" />
+    <option name="height" value="1005" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -131,6 +138,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -142,20 +150,19 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hsle_naviAA" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\hsle" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\hsle" />
     </key>
   </component>
@@ -190,17 +197,22 @@
       <workItem from="1581430115364" duration="27000" />
       <workItem from="1581499368545" duration="32387000" />
       <workItem from="1582113180001" duration="2641000" />
+      <workItem from="1582721249718" duration="2421000" />
+      <workItem from="1584003437848" duration="25167000" />
+      <workItem from="1584345340389" duration="10589000" />
+      <workItem from="1584889568380" duration="9218000" />
+      <workItem from="1584973806617" duration="3126000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150218000" />
+    <option name="totallyTimeSpent" value="215731000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1934" height="1047" extended-state="0" />
+    <frame x="20" y="66" width="1680" height="1005" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13489114" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.055862494" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -212,7 +224,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.28339142" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.083028086" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -223,13 +235,7 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../AALina/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../AALina/index.html" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/semview.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/emails.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/selMatrikel.php" />
@@ -245,7 +251,6 @@
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/tableview.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/config.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/emails.php" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/index.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/sdttableview.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-4/information.html" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-4/index.html" />
@@ -272,25 +277,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bubbles_old.json" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/gittatls.php" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/main.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/modal.js" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/index.php" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/content.html" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/navigation.html" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/all.php" />
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/index.html" />
+    <entry file="file://$PROJECT_DIR$/bubbles_orig.json" />
+    <entry file="file://$PROJECT_DIR$/bub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11872">
+          <caret line="424" column="5" selection-start-line="424" selection-start-column="5" selection-end-line="424" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="560">
           <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bubbles_old.json" />
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="106" column="60" lean-forward="true" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
+        <state relative-caret-position="291">
+          <caret line="270" column="29" selection-start-line="270" selection-start-column="29" selection-end-line="270" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bubbles.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
+        <state relative-caret-position="252">
+          <caret line="9" column="226" lean-forward="true" selection-start-line="9" selection-start-column="208" selection-end-line="9" selection-end-column="226" />
         </state>
       </provider>
     </entry>
