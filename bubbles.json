@@ -7,7 +7,7 @@
         "description": "... ist eine medienpädagogisch professionelle Realisierung der Verknüpfung von Präsenzphasen und moderierten Online-Phasen unter Einbeziehung verschiedener zumeist webbasierter Tools.",
         "type": "Thema",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Blended-Learning.aspx",
-        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Interaktion%20in%20der%20Lehre%20st%C3%A4rken","Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen"],"tools":["Padlet"]}]
+        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen"],"tools":["SWITCHinteract"]}]
       }
     ]},
   {"name": "scenarios", "details": "Szenarien","color": "rgb(255, 127, 14)",

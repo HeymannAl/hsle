@@ -65,9 +65,9 @@ $(document).ready(function () {
             }) // #1f77b4
             .style("opacity", 0.3)
             .style("display", "none")
-            // .on("mouseover", function (d, i) {
-            //     return activateBubble(d, i);
-            // });
+            .on("mouseover", function (d, i) {
+                return activateBubble(d, i);
+            });
 
         bubbleObj.append("text")
             .attr("class", "topBubbleText")
@@ -96,26 +96,11 @@ $(document).ready(function () {
 //let nSubBubble = Math.floor(root.children[iB].children.length/2.0);
 
             var groups = svg.selectAll(".groups")
-                .data(root[0].children)
+                .data(root[iB].children)
                 .enter()
                 .append("g")
                 .attr("class", "gbar");
 
-            groups.append('text')
-                .attr("class", "childBubbleText childBubbleText" + 0)
-                .attr("x", 530)
-                .attr("y", 360)
-                //  .style("display", 'none')
-                .attr("text-anchor", "left")
-                .style("fill", '#000000') // #1f77b4
-                .attr("font-size", 25)
-                .attr("cursor", "pointer")
-                .text(function (d, i) {
-                    if (i==0){
-                        return d.title
-                    }
-
-                }).call(wrapLabel, 200, 0)
             groups.append('rect')
                 .attr("x", 400)
                 .attr("y", 300)
@@ -126,8 +111,21 @@ $(document).ready(function () {
                 .attr("cursor", "pointer")
                 // .style("opacity", 0.5)
                 .style("fill", function (d, i) {
-                    return root[0].color;
+                    return root[iB].color;
                 })
+
+            groups.append('text')
+                .attr("class", "childBubbleText childBubbleText" + iB)
+                .attr("x", 350)
+                .attr("y", 360)
+                //  .style("display", 'none')
+                .attr("text-anchor", "left")
+                .style("fill", '#000000') // #1f77b4
+                .attr("font-size", 25)
+                .attr("cursor", "pointer")
+                .text(function (d) {
+                    return d.title
+                }).call(wrapLabel, 200, 0)
             /*.on("mouseover", function (d, i) {
                 d3.selectAll('.childBubbleText').style("font-weight", '300');
                 d3.select(this).style("font-weight", '700');
@@ -150,7 +148,7 @@ $(document).ready(function () {
                 for (let j = 0; j < attr.length; j++) {
                     if ((root[iB].children[isB].attr[0][attr[j]] == null)||(root[iB].children[isB].attr[0][attr[j]] == 'undefined'))
                     {
-                    // console.log(root[iB].children[isB].attr[0][attr[i]] );
+                        // console.log(root[iB].children[isB].attr[0][attr[i]] );
                     }
                     else{
                         d3.select(this).selectAll(".childBubble" + iB)
@@ -211,14 +209,14 @@ $(document).ready(function () {
                     d3.select(this).attr("y", y);
                 }).on("mouseover", function (d, i) {
                     let elem = d3.select(this.parentNode).selectAll(".subchildBubble");
-                       elem.style('opacity', '1.0');
-                    })
+                    elem.style('opacity', '1.0');
+                })
             })
             let textvisible=false;
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
                     if ((root[iB].children[isB].attr[0][attr[j]] == null) || (root[iB].children[isB].attr[0][attr[j]] == 'undefined')) {
-                //  console.log(root[iB].children[isB].attr[0][attr[i]] );
+                        //  console.log(root[iB].children[isB].attr[0][attr[i]] );
                     } else {
                         d3.select(this).selectAll('.text')
                             .data(root[iB].children[isB].attr[0][attr[j]])
@@ -246,22 +244,22 @@ $(document).ready(function () {
                                 return title;
                             }).call(wrapLabel, 200, 0)
                             .on("click", function(d) {
-                            let url;
+                                let url;
 
-                            $.grep(root[j].children, function (e) {
-                                if (d === e.id) {
-                                    url = e.url;
-                                    window.open(url);
-                                }
-                            });
-                        }).on("click", function(d) {
+                                $.grep(root[j].children, function (e) {
+                                    if (d === e.id) {
+                                        url = e.url;
+                                        window.open(url);
+                                    }
+                                });
+                            }).on("click", function(d) {
 
                             let TitleValueID = d3.select(this).attr('id');
                             d3.selectAll(".description").style('opacity', '0');
                             d3.selectAll("#"+TitleValueID).style('opacity', '1.0');
                             textvisible = true;
 
-                      });
+                        });
 
                         d3.select(this).selectAll('.description')
                             .data(root[iB].children[isB].attr[0][attr[j]])
@@ -272,7 +270,7 @@ $(document).ready(function () {
                                 return "subchildBubble_" + iB + "sub_" + i + root[iB].children[isB].id;
                             })
                             .attr("cursor", "pointer")
-                           // .style("opacity", '0')
+                            // .style("opacity", '0')
                             .style("fill", '#000000') // #1f77b4
                             //.style("display", 'none')
                             .attr("font-size", 14)
@@ -280,11 +278,11 @@ $(document).ready(function () {
                             .style("opacity", '0')
                             .text(function (d, i) {
                                 let title;
-                                    $.grep(root[j].children, function (e) {
-                                        if (d === e.id) {
-                                            title = e.description;
-                                        }
-                                    });
+                                $.grep(root[j].children, function (e) {
+                                    if (d === e.id) {
+                                        title = e.description;
+                                    }
+                                });
 
                                 return title;
                             }).call(wrapLabel, 200, 0).on("click", function(d) {
@@ -319,7 +317,7 @@ $(document).ready(function () {
                     //let parentYValue = d3.select('#'+parentValueID).select(this.childNodes).attr("y");
                     let parentXValue = $('#'+parentValueID).find('tspan').attr('x');
                     let parentYValue = $('#'+parentValueID).find('tspan').attr('y');
-                   // let parentYValue = d3.select('#'+parentValueID).select(this.childNodes).attr("y");
+                    // let parentYValue = d3.select('#'+parentValueID).select(this.childNodes).attr("y");
                     //let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     //let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
                     //angle = (i / (num1/2)) * Math.PI;
@@ -336,7 +334,7 @@ $(document).ready(function () {
     });
 
     resetBubbles = function () {
-d3.selectAll('.description').style('opacity', '0.0');
+        d3.selectAll('.description').style('opacity', '0.0');
 //         oR = w / (1 + 3 * nTop);
 //
 //         h = Math.ceil(w / nTop * 2);
@@ -461,9 +459,9 @@ d3.selectAll('.description').style('opacity', '0.0');
                 .attr("font-size", function () {
                     return (k == i) ? 12 : 10;
                 })
-             .style("display", function () {
-                 return (k == i) ? 'block' : 'none';
-             });
+                .style("display", function () {
+                    return (k == i) ? 'block' : 'none';
+                });
 
             t.selectAll(".childBubble" + k)
             // .attr("cx", function (d, i) {
@@ -570,7 +568,7 @@ d3.selectAll('.description').style('opacity', '0.0');
 //   });
 // }
     }
- window.onresize = resetBubbles;
+    window.onresize = resetBubbles;
 
     function wrapLabel(text, width, lineheight) {
         text.each(function () {
@@ -584,7 +582,7 @@ d3.selectAll('.description').style('opacity', '0.0');
             // first tspan element (first line)
                 .append("tspan")
 
-                //.attr("dy", lineNumber + "em");
+            //.attr("dy", lineNumber + "em");
             // let domID = textElement.attr('id').slice(-1); // get dom id of text element
             // let transform = textElement.attr("transform"); // get transformation of text element
             // transform = transform.substring(10, transform.length - 1).split(' '); // get transformation x/y as array
@@ -600,14 +598,14 @@ d3.selectAll('.description').style('opacity', '0.0');
                     line = [word];
                     // append new tspan element and add word in case its the last word of the text
                     tspan = textElement.append("tspan")
-                       // .attr("x", 0)
-                        //.attr("y", 0)
+                    // .attr("x", 0)
+                    //.attr("y", 0)
                         .attr("dy", ++lineNumber + lineheight +"em")
                         .text(word);
-               }
-           }
+                }
+            }
 
-          //  d3.select('#storyName').attr('transform', `translate(5,19)`)
+            //  d3.select('#storyName').attr('transform', `translate(5,19)`)
 
             // get text element height
             //let textElementHeight = parseInt(document.getElementById(`nodeLabel${domID}`).getBBox().height / 25);
