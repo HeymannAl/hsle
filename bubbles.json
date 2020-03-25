@@ -7,7 +7,7 @@
         "description": "... ist eine medienpädagogisch professionelle Realisierung der Verknüpfung von Präsenzphasen und moderierten Online-Phasen unter Einbeziehung verschiedener zumeist webbasierter Tools.",
         "type": "Thema",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Blended-Learning.aspx",
-        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen"],"tools":["SWITCHinteract"]}]
+        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
       }
     ]},
   {"name": "scenarios", "details": "Szenarien","color": "rgb(255, 127, 14)",
@@ -37,11 +37,11 @@
         "attr": [{ "topics" : [ "Videos-in-der-Lehre","Blended-Learning"],"tools":["SWITCHinteract"]}]
       },
       {
-        "id": "Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen",
+        "id": "Aufzeichnungen-von-Vorlesungen",
         "title": "Aufzeichnungen von Vorlesungen...",
         "description": "Für bestimmte Situationen kann es sinnvoll sein, Vorlesungen oder Vorträge live aufzuzeichnen («Live-Digitized-Lecture»). Diese Aufzeichnungen können synchron (Streaming) oder asynchron (als bearbeiteter Videocast) zum Einsatz kommen.",
         "type": "scenario",
-        "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen.aspx",
+        "url": "http://localhost/hsle/index2.html",
         "attr": [{ "topics" : [ "Videos-in-der-Lehre","Blended-Learning"]}]
       }
     ]},

@@ -5,7 +5,7 @@ $(document).ready(function () {
     let oR = 0;
     let nTop = 0;
 
-    let attr = ['topics', 'scenarios', 'tools'];
+    let attr = ['scenarios', 'topics', 'tools'];
 
     let svgContainer = d3.select("#mainBubble")
         .style("height", h + "px");
@@ -13,7 +13,7 @@ $(document).ready(function () {
     let svg = d3.select("#mainBubble").append("svg")
         .attr("class", "mainBubbleSVG")
         .attr("width", '1500')
-        .attr("height", '600')
+        .attr("height", h)
 
     let mainNote = svg.append("text")
         .attr("id", "bubbleItemNote")
@@ -28,7 +28,7 @@ $(document).ready(function () {
         });
 
 
-    d3.json("bubbles.json", function (error, root) {
+    d3.json("bubbles2.json", function (error, root) {
 //  console.log(error);
 
         let bubbleObj = svg.selectAll(".topBubble")
@@ -125,7 +125,7 @@ $(document).ready(function () {
                 .attr("cursor", "pointer")
                 .text(function (d) {
                     return d.title
-                }).call(wrapLabel, 200, 0)
+                })
             /*.on("mouseover", function (d, i) {
                 d3.selectAll('.childBubbleText').style("font-weight", '300');
                 d3.select(this).style("font-weight", '700');
@@ -203,7 +203,7 @@ $(document).ready(function () {
                     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
                     angle = (i / (num/2)) * Math.PI;
-                    let x = ((oR+400  * Math.cos(angle)))+Math.round(parentXValue)+290; // Calculate the x position of the element.
+                    let x = ((oR+380  * Math.cos(angle)))+Math.round(parentXValue)+290; // Calculate the x position of the element.
                     let y = ((oR+250  * Math.sin(angle)))+Math.round(parentYValue)+200; // Calculate the y position of the element.
                     d3.select(this).attr("x", x);
                     d3.select(this).attr("y", y);
@@ -304,7 +304,7 @@ $(document).ready(function () {
                     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
                     angle = (i / (num/2)) * Math.PI;
-                    let cx = ((oR+400  * Math.cos(angle)))+Math.round(parentXValue)+380; // Calculate the x position of the element.
+                    let cx = ((oR+380  * Math.cos(angle)))+Math.round(parentXValue)+380; // Calculate the x position of the element.
                     let cy = ((oR+260  * Math.sin(angle)))+Math.round(parentYValue)+220; // Calculate the y position of the element.
                     d3.select(this).selectAll('tspan').attr("x", cx);
                     d3.select(this).selectAll('tspan').attr("y", cy);

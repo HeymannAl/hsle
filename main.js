@@ -13,7 +13,7 @@ $(document).ready(function () {
     let svg = d3.select("#mainBubble").append("svg")
         .attr("class", "mainBubbleSVG")
         .attr("width", '1500')
-        .attr("height", '600')
+        .attr("height", h)
 
     let mainNote = svg.append("text")
         .attr("id", "bubbleItemNote")
