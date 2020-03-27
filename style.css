@@ -25,7 +25,11 @@
     animation-iteration-count: 2;
 
 }
-
+.description{
+    font-family: "Open Sans Regular", Verdana, Arial;
+    font-size: 13px;
+    fill: #444444;
+}
 @keyframes float {
     0% {
         box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
@@ -40,3 +44,17 @@
         transform: translatey(0px);
     }
 }
+.gbar text, .gbar rect, tspan{
+   cursor: default;
+}
+.tspanMore{
+    cursor:pointer;
+}
+
+/*@keyframes float {*/
+    /*0% {opacity: 0.1}*/
+    /*49%{opacity: 0.5}*/
+    /*50% {opacity: 1}*/
+/*}*/
+
+/*float{animation: blink 0.3s infinite;}*/

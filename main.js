@@ -7,6 +7,9 @@ $(document).ready(function () {
 
     let attr = ['topics', 'scenarios', 'tools'];
 
+    localStorage.setItem('top', 'topics');
+        let top = localStorage.getItem('top');
+
     let svgContainer = d3.select("#mainBubble")
         .style("height", h + "px");
 
@@ -87,9 +90,7 @@ $(document).ready(function () {
             .text(function (d) {
                 return d.details
             })
-            .on("mouseover", function (d, i) {
-                return activateBubble(d, i);
-            });
+
 
         for (let iB = 0; iB < 1; iB++) {
 
@@ -132,7 +133,7 @@ $(document).ready(function () {
                 d3.selectAll('.childBubbleText').style("font-weight", '300');
                 d3.select(this).style("font-weight", '700');
             })*/
-                .on("click", function(d) { window.open(d.url); });
+              //  .on("click", function(d) { window.open(d.url); });
             /*MAIN END*/
 
             /*CHILDREN BEGIN*/
@@ -143,16 +144,19 @@ $(document).ready(function () {
                 .attr("class", "gbarChild");
             groupsChild.append('rect')
                 .attr("class", "childBubble123" + iB + " childBubble")
+
                 .attr("id", function (d, i) {
                     return "childBubble_" + iB + "sub_" + i;
                 });
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
-                    if ((root[iB].children[isB].attr[0][attr[j]] == null)||(root[iB].children[isB].attr[0][attr[j]] == 'undefined'))
+                    if ((root[iB].children[isB].top[attr[j]] == null)||(root[iB].children[isB].top[attr[j]] == 'undefined'))
                     {
                     // console.log(root[iB].children[isB].attr[0][attr[i]] );
                     }
                     else{
+                       // console.log(root[iB].children[isB].top[attr[j]]);
+                        console.log('arr'+root[iB].children[isB].attr[0][attr[j]]);
                         d3.select(this).selectAll(".childBubble" + iB)
                             .data(root[iB].children[isB].attr[0][attr[j]])
                             .enter()
@@ -187,13 +191,10 @@ $(document).ready(function () {
                                 });
                                 return color;
                             }).on("click", function(d) {
-                            let url;
-                            $.grep(root[j].children, function (e) {
-                                if (d === e.id) {
-                                    url = e.url;
-                                    window.open(url);
-                                }
-                            });
+                            let TitleValueID = d3.select(this).attr('id');
+                            d3.selectAll(".description").style('opacity', '0');
+                            d3.selectAll("#"+TitleValueID).style('opacity', '1.0');
+                            textvisible = true;
                         });
                     }
                 }
@@ -230,8 +231,9 @@ $(document).ready(function () {
                             })
                             .attr("cursor", "pointer")
                             //  .style("display", 'none')
-                            .style("fill", '#000000') // #1f77b4
-                            .attr("font-size", 20)
+                            .style("fill", '#1e1e1e') // #1f77b4
+                            .attr("font-size", 19)
+                            .attr("ont-family", 'Open Sans Semibold')
                             .attr("text-anchor", "left")
                             .attr("dominant-baseline", "middle")
                             .attr("alignment-baseline", "middle")
@@ -246,16 +248,6 @@ $(document).ready(function () {
                                 return title;
                             }).call(wrapLabel, 200, 0)
                             .on("click", function(d) {
-                            let url;
-
-                            $.grep(root[j].children, function (e) {
-                                if (d === e.id) {
-                                    url = e.url;
-                                    window.open(url);
-                                }
-                            });
-                        }).on("click", function(d) {
-
                             let TitleValueID = d3.select(this).attr('id');
                             d3.selectAll(".description").style('opacity', '0');
                             d3.selectAll("#"+TitleValueID).style('opacity', '1.0');
@@ -271,23 +263,31 @@ $(document).ready(function () {
                             .attr("id", function (data, i) {
                                 return "subchildBubble_" + iB + "sub_" + i + root[iB].children[isB].id;
                             })
-                            .attr("cursor", "pointer")
-                           // .style("opacity", '0')
-                            .style("fill", '#000000') // #1f77b4
-                            //.style("display", 'none')
-                            .attr("font-size", 14)
+                            .attr("font-size", 18)
                             .attr("text-anchor", "left")
                             .style("opacity", '0')
                             .text(function (d, i) {
-                                let title;
+                                let description;
                                     $.grep(root[j].children, function (e) {
                                         if (d === e.id) {
-                                            title = e.description;
+                                            description = e.description;
                                         }
                                     });
+                                return description;
+                            })
+                            .call(wrapLabel, 200, 0)
 
-                                return title;
-                            }).call(wrapLabel, 200, 0).on("click", function(d) {
+                        d3.selectAll('.description')
+                            .selectAll('.tspan').filter(function(d, i, j) {
+                                return i >= 2; }).remove();
+
+                        d3.selectAll('.description')
+                            .data(root[iB].children[isB].attr[0][attr[j]])
+                            .append('tspan')
+                            .text('mehr Informationen')
+                            .attr('class', 'tspanMore')
+                            .attr('dy', 60)
+                            .on("click", function(d) {
                             let url;
                             $.grep(root[j].children, function (e) {
                                 if (d === e.id) {
@@ -296,6 +296,13 @@ $(document).ready(function () {
                                 }
                             });
                         });
+
+                        // d3.selectAll('.tspanMore')
+                        //     .insert('tspan', ':last-child')
+                        //     .attr('dy', 60)
+                        //     .attr('dx', 100)
+                        //     .text('...');
+
                     }
                 }
                 /*CHILDREN END*/
@@ -314,17 +321,8 @@ $(document).ready(function () {
                 let num1 = d3.selectAll('.description'+root[iB].children[isB].id).size();
                 d3.selectAll('.description'+root[iB].children[isB].id).each(function (d, i) {
                     let parentValueID = d3.select(this).attr('id');
-
-                    //let parentXValue = d3.select('#'+parentValueID).select(this.childNodes).attr("x");
-                    //let parentYValue = d3.select('#'+parentValueID).select(this.childNodes).attr("y");
                     let parentXValue = $('#'+parentValueID).find('tspan').attr('x');
                     let parentYValue = $('#'+parentValueID).find('tspan').attr('y');
-                   // let parentYValue = d3.select('#'+parentValueID).select(this.childNodes).attr("y");
-                    //let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                    //let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                    //angle = (i / (num1/2)) * Math.PI;
-                    //let cx = ((oR+300 * Math.cos(angle)))+Math.round(parentXValue)+200; // Calculate the x position of the element.
-                    //let cy = ((oR+250  * Math.sin(angle)))+Math.round(parentYValue)+300; // Calculate the y position of the element.
                     d3.select(this).selectAll('tspan').attr("x", parentXValue);
                     d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue)+50);
                 })
@@ -337,59 +335,7 @@ $(document).ready(function () {
 
     resetBubbles = function () {
 d3.selectAll('.description').style('opacity', '0.0');
-//         oR = w / (1 + 3 * nTop);
-//
-//         h = Math.ceil(w / nTop * 2);
-//
-//         mainNote.attr("y", h - 15);
-//
-//         let t = svg.transition()
-//             .duration(650);
-//
-//         t.selectAll(".topBubble")
-//             .attr("r", function (d) {
-//                 return oR;
-//             })
-//             .attr("cx", function (d, i) {
-//                 return oR * (3 * (1 + i) - 1);
-//             })
-//             .attr("cy", (h + oR) / 3);
-//
-//         t.selectAll(".topBubbleText")
-//             .attr("font-size", 30)
-//             .attr("x", function (d, i) {
-//                 return oR * (3 * (1 + i) - 1);
-//             })
-//             .attr("y", (h + oR) / 3);
-//
-//         for (let k = 0; k < nTop; k++) {
-//             t.selectAll(".childBubbleText" + k)
-//                 .attr("x", function (d, i) {
-//                     return (oR * (3 * (k + 1) - 1) + oR * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-//                 })
-//                 .attr("y", function (d, i) {
-//                     return ((h + oR) / 3 + oR * 1.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-//                 })
-//                 .attr("font-size", 60)
-// // .style("display", 'none');
-//
-//             t.selectAll(".childBubble" + k)
-//                 .attr("r", function (d) {
-//                     return oR / 3.0;
-//                 })
-//                 .style("display", 'block')
-//                 .style("opacity", 0.5)
-//                 .attr("cx", function (d, i) {
-//                     return (oR * (3 * (k + 1) - 1) + oR * 1.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-//                 })
-//                 .attr("cy", function (d, i) {
-//                     return ((h + oR) / 3 + oR * 1.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-//                 });
-//             t.selectAll(".subchildBubble")
-// // .style("display", 'none');
-//             t.selectAll(".subchildBubbleText")
-// //.style("display", 'none');
-//         }
+
     }
 
 
@@ -401,21 +347,6 @@ d3.selectAll('.description').style('opacity', '0.0');
 // increase this bubble and decrease others
         let t = svg.transition().duration(d3.event.altKey ? 7500 : 350);
         t.selectAll(".topBubble")
-        // .attr("cx", function (d, ii) {
-        //     if (i == ii) {
-        //         // Nothing to change
-        //         return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
-        //     } else {
-        //         // Push away a little bit
-        //         if (ii < i) {
-        //             // left side
-        //             return oR * 0.6 * (3 * (1 + ii) - 1);
-        //         } else {
-        //             // right side
-        //             return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
-        //         }
-        //     }
-        // })
             .attr("r", function (d, ii) {
                 if (i == ii)
                     return oR * 1.8;
@@ -424,21 +355,6 @@ d3.selectAll('.description').style('opacity', '0.0');
             });
 
         t.selectAll(".topBubbleText")
-        // .attr("x", function (d, ii) {
-        //     if (i == ii) {
-        //         // Nothing to change
-        //         return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
-        //     } else {
-        //         // Push away a little bit
-        //         if (ii < i) {
-        //             // left side
-        //             return oR * 0.6 * (3 * (1 + ii) - 1);
-        //         } else {
-        //             // right side
-        //             return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
-        //         }
-        //     }
-        // })
             .attr("font-size", function (d, ii) {
                 if (i == ii)
                     return 30 * 1.5;
@@ -452,12 +368,6 @@ d3.selectAll('.description').style('opacity', '0.0');
             signSide = 1;
             if (k < nTop / 2) signSide = 1;
             t.selectAll(".childBubbleDescription" + k)
-            // .attr("x", function (d, i) {
-            //     return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-            // })
-            // .attr("y", function (d, i) {
-            //     return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-            // })
                 .attr("font-size", function () {
                     return (k == i) ? 12 : 10;
                 })
@@ -466,20 +376,10 @@ d3.selectAll('.description').style('opacity', '0.0');
              });
 
             t.selectAll(".childBubble" + k)
-            // .attr("cx", function (d, i) {
-            //     return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-            // })
-            // .attr("cy", function (d, i) {
-            //     return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-            // })
                 .attr("r", function () {
                     return (k == i) ? (oR * 0.55) : (oR / 3.0);
                 })
-            /*.style("display", function () {
-                return (k == i) ? 'block' : 'none';
-            }).style("opacity", function () {
-            return (k == i) ? '1' : '0';
-            });*/
+
         }
     }
     function activateSubBubble(d, i) {
@@ -487,93 +387,14 @@ d3.selectAll('.description').style('opacity', '0.0');
         let t = svg.transition()
             .duration(d3.event.altKey ? 7500 : 350);
         t.select(".childBubble")
-// .attr("cx", function (d, ii) {
-//     if (i == ii) {
-//         // Nothing to change
-//         return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
-//     } else {
-//         // Push away a little bit
-//         if (ii < i) {
-//             // left side
-//             return oR * 0.6 * (3 * (1 + ii) - 1);
-//         } else {
-//             // right side
-//             return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
-//         }
-//     }
-// })
-// .attr("r", function (d, ii) {
-//     if (i == ii)
-//         return oR/1.5 ;
-//     else
-//         return oR/2.2;
-// });
-// t.select(".childBubble").selectAll(".subchildBubble").style('opacity', '1.0');
-//t.select(".childBubble").selectAll(".subchildBubbleText").style('opacity', '1.0');
 
-
-// t.selectAll(".topBubbleText")
-//     .attr("x", function (d, ii) {
-//         if (i == ii) {
-//             // Nothing to change
-//             return oR * (3 * (1 + ii) - 1) - 0.6 * oR * (ii - 1);
-//         } else {
-//             // Push away a little bit
-//             if (ii < i) {
-//                 // left side
-//                 return oR * 0.6 * (3 * (1 + ii) - 1);
-//             } else {
-//                 // right side
-//                 return oR * (nTop * 3 + 1) - oR * 0.6 * (3 * (nTop - ii) - 1);
-//             }
-//         }
-//     })
-//     .attr("font-size", function (d, ii) {
-//         if (i == ii)
-//             return 30 * 1.5;
-//         else
-//             return 30 * 0.6;
-//     })
-// ;
-//
-// let signSide = -1;
-// for (let k = 0; k < nTop; k++) {
-//     signSide = 1;
-//     if (k < nTop / 2) signSide = 1;
-//     t.selectAll(".childBubbleText" + k)
-//         .attr("x", function (d, i) {
-//             return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-//         })
-//         .attr("y", function (d, i) {
-//             return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-//         })
-//         .attr("font-size", function () {
-//             return (k == i) ? 12 : 6;
-//         })
-//         .style("opacity", '1.0');
-//     // .style("opacity", function () {
-//     //     return (k == i) ? 1 : 0;
-//     // });
-//
-//     t.selectAll(".childBubble" + k)
-//         .attr("cx", function (d, i) {
-//             return (oR * (3 * (k + 1) - 1) - 0.6 * oR * (k - 1) + signSide * oR * 2.5 * Math.cos((i - 1) * 45 / 180 * 3.1415926));
-//         })
-//         .attr("cy", function (d, i) {
-//             return ((h + oR) / 3 + signSide * oR * 2.5 * Math.sin((i - 1) * 45 / 180 * 3.1415926));
-//         })
-//         .attr("r", function () {
-//             return (k == i) ? (oR * 0.55) : (oR / 3.0);
-//         })
-//         .style("opacity", function () {
-//             return (k == i) ? 1 : 0;
-//   });
-// }
     }
  window.onresize = resetBubbles;
 
     function wrapLabel(text, width, lineheight) {
-        text.each(function () {
+
+
+            text.each(function () {
             let textElement = d3.select(this); // d3 text element
             const text = textElement.text(); // actual text
             let words = text.split(/\s+/);// text with words in an array
@@ -589,40 +410,32 @@ d3.selectAll('.description').style('opacity', '0.0');
             // let transform = textElement.attr("transform"); // get transformation of text element
             // transform = transform.substring(10, transform.length - 1).split(' '); // get transformation x/y as array
 
-            while (word = words.shift()) { // get first element and remove it from array
-                line.push(word);
-                tspan.text(line.join(" ")); // set new text to tspan
-                if (tspan.node().getComputedTextLength() > width) { // check if tspan is wider than allowed
-                    // remove last word
-                    line.pop();
-                    tspan.text(line.join(" "));
-                    // removed word is start of next line
-                    line = [word];
-                    // append new tspan element and add word in case its the last word of the text
-                    tspan = textElement.append("tspan")
-                       // .attr("x", 0)
-                        //.attr("y", 0)
-                        .attr("dy", ++lineNumber + lineheight +"em")
-                        .text(word);
-               }
-           }
+                    while (word = words.shift()) { // get first element and remove it from array
+                        line.push(word);
+                        tspan.text(line.join(" ")); // set new text to tspan
 
-          //  d3.select('#storyName').attr('transform', `translate(5,19)`)
+                            if (tspan.node().getComputedTextLength() > width) { // check if tspan is wider than allowed
+                                // remove last word
+                                line.pop();
+                                tspan.text(line.join(" "));
+                                // removed word is start of next line
+                                line = [word];
+                                // append new tspan element and add word in case its the last word of the text
+                                tspan = textElement.append("tspan")
+                                    .attr('class', 'tspan')
+                                    .attr("x", 0)
+                                    .attr("y", 0)
+                                    .attr("dy", ++lineNumber * 1.3 + "em")
+                                    .text(word)
 
-            // get text element height
-            //let textElementHeight = parseInt(document.getElementById(`nodeLabel${domID}`).getBBox().height / 25);
+                        }
 
-            // place element depending on text anchor
-            /*if (textAnchor[domID] === 'top') {
-                $(`#nodeLabel${domID}`).attr('transform', `translate(${parseInt(transform[0])+5} ${parseInt(transform[1])+5})`);
-            } else if (textAnchor[domID] === 'middle') {
-                $(`#nodeLabel${domID}`).attr('transform', `translate(${parseInt(transform[0])+7} ${-5 - textElementHeight/2 + parseInt(transform[1])})`);
-            } else if (textAnchor[domID] === 'topRight') {
-                let nodeLabelWidth = parseInt(document.getElementById(`nodeLabel${domID}`).getBBox().width);
-                $(`#nodeLabel${domID}`).attr('transform', `translate(${parseInt(transform[0])-10-nodeLabelWidth} ${parseInt(transform[1])-10})`);
-            } else {
-                $(`#nodeLabel${domID}`).attr('transform', `translate(${parseInt(transform[0])+5} ${-9 - textElementHeight + parseInt(transform[1])})`);
-            }*/
+
+                    }
+
         });
+
     }
+
+
 });

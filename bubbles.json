@@ -8,6 +8,32 @@
         "type": "Thema",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Blended-Learning.aspx",
         "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
+      },
+      {
+        "id": "Elektronische-Pruefungen",
+        "title": "Elektronische Prüfungen",
+        "description": "Elektronische Prüfungen (E-Assessments) bieten eine Alternative zu Papierprüfungen.",
+        "type": "Thema",
+        "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Elektronische-Pruefungen.aspx",
+        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
+
+      },
+      {
+        "id": "Interaktion-in-der-Hochschullehre",
+        "title": "Interaktion in der Lehre",
+        "description": "Digitale Tools ermöglichen es den Lehrenden in Aus- und Weiterbildung, die Interaktion während Lehrveranstaltungen zu stärken und die Studierenden damit zu aktivieren und zu motivieren.",
+        "type": "Thema",
+        "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Interaktion-in-der-Hochschullehre.aspx",
+        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
+
+      },
+      {
+        "id": "Videos-in-der-Lehre",
+        "title": "Videos in der Lehre",
+        "description": "Mit Videos können Lehr- und Lerninhalte auf ansprechende Weise veranschaulicht werden. Als Ergänzung zum Präsenzunterricht eignen sich kurze Lehrvideos gut, da sie den Studierenden auf Videoplattformen  oder eingebettet in ein Learning Management System jederzeit und überall zur Verfügung stehen.",
+        "type": "Thema",
+        "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Videos-in-der-Lehre.aspx",
+        "attr": [{ "scenarios":["Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen"],"tools":["SWITCHinteract"]}]
       }
     ]},
   {"name": "scenarios", "details": "Szenarien","color": "rgb(255, 127, 14)",
