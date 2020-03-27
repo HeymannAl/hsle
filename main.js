@@ -7,9 +7,6 @@ $(document).ready(function () {
 
     let attr = ['topics', 'scenarios', 'tools'];
 
-    localStorage.setItem('top', 'topics');
-        let top = localStorage.getItem('top');
-
     let svgContainer = d3.select("#mainBubble")
         .style("height", h + "px");
 
@@ -30,19 +27,34 @@ $(document).ready(function () {
             return "";
         });
 
+    let currentNode;
+    let currentId;
+    localStorage.clear();
+    if (localStorage.getItem("currentNode") === null) {
+        localStorage.setItem('currentNode', 'tscenarios');
+        localStorage.setItem('currentId', 'Aufzeichnungen-von-Vorlesungen');
+        currentNode = 'scenarios';
+        currentId = 'Aufzeichnungen-von-Vorlesungen';
+    } else {
+        currentNode = localStorage.getItem('currentNode');
+        currentId = localStorage.getItem('currentId');
+    }
+    let dataTop;
+    let datafirstChild;
 
     d3.json("bubbles.json", function (error, root) {
 //  console.log(error);
-
+        dataTop = root.filter(function (d) {
+            return d.name == currentNode
+        });
         let bubbleObj = svg.selectAll(".topBubble")
-            .data(root)
+            .data(dataTop)
             .enter().append("g")
             .attr("id", function (d, i) {
                 return "topBubbleAndText_" + i
             });
 
-//  console.log(root);
-        nTop = root.length;
+        nTop = 100;
 
         oR = w / (1 + 3 * nTop);
 
@@ -54,6 +66,7 @@ $(document).ready(function () {
         bubbleObj.append("rect")
             .attr("class", "topBubble")
             .attr("id", function (d, i) {
+
                 return "topBubble" + i;
             })
             .attr("r", function (d) {
@@ -65,22 +78,16 @@ $(document).ready(function () {
             // })
             .style("fill", function (d, i) {
                 return d.color;
-            }) // #1f77b4
+            })
             .style("opacity", 0.3)
             .style("display", "none")
-            // .on("mouseover", function (d, i) {
-            //     return activateBubble(d, i);
-            // });
+
 
         bubbleObj.append("text")
             .attr("class", "topBubbleText")
-            // .attr("x", function (d, i) {
-            //     return oR * (3 * (1 + i) - 1);
-            // })
-            // .attr("y", (h + oR) / 3)
             .style("fill", function (d, i) {
                 return d.color;
-            }) // #1f77b4
+            })
             .attr("font-size", 60)
             .attr("text-anchor", "middle")
             .attr("dominant-baseline", "middle")
@@ -91,83 +98,73 @@ $(document).ready(function () {
                 return d.details
             })
 
-
         for (let iB = 0; iB < 1; iB++) {
-
-//let nSubBubble = Math.floor(root.children[iB].children.length/2.0);
+            datafirstChild = dataTop[0].children.filter(function (d) {
+                return d.id == currentId
+            });
 
             var groups = svg.selectAll(".groups")
-                .data(root[0].children)
+                .data(datafirstChild)
                 .enter()
                 .append("g")
                 .attr("class", "gbar");
 
+            groups.append('rect')
+                .attr("x", 400)
+                .attr("y", 300)
+                .attr("rx", 15)
+                .attr("ry", 15)
+                .attr("width", 100)
+                .attr("height", 100)
+                .attr("cursor", "pointer")
+                .style("fill", function (d, i) {
+                    return root[iB].color;
+                })
+
             groups.append('text')
-                .attr("class", "childBubbleText childBubbleText" + 0)
-                .attr("x", 530)
+                .attr("class", "childBubbleText childBubbleText" + iB)
+                .attr("x", 350)
                 .attr("y", 360)
                 //  .style("display", 'none')
                 .attr("text-anchor", "left")
                 .style("fill", '#000000') // #1f77b4
                 .attr("font-size", 25)
                 .attr("cursor", "pointer")
-                .text(function (d, i) {
-                    if (i==0){
-                        return d.title
-                    }
-
-                }).call(wrapLabel, 200, 0)
-            groups.append('rect')
-                .attr("x", 400)
-                .attr("y", 300)
-                .attr("rx",15)
-                .attr("ry",15)
-                .attr("width", 100)
-                .attr("height", 100)
-                .attr("cursor", "pointer")
-                // .style("opacity", 0.5)
-                .style("fill", function (d, i) {
-                    return root[0].color;
+                .text(function (d) {
+                    return d.title
                 })
-            /*.on("mouseover", function (d, i) {
-                d3.selectAll('.childBubbleText').style("font-weight", '300');
-                d3.select(this).style("font-weight", '700');
-            })*/
-              //  .on("click", function(d) { window.open(d.url); });
+
             /*MAIN END*/
+
 
             /*CHILDREN BEGIN*/
             var groupsChild = svg.selectAll(".childBubble" + iB)
-                .data(root[iB].children)
+                .data(datafirstChild)
                 .enter()
                 .append("g")
                 .attr("class", "gbarChild");
             groupsChild.append('rect')
                 .attr("class", "childBubble123" + iB + " childBubble")
-
                 .attr("id", function (d, i) {
                     return "childBubble_" + iB + "sub_" + i;
                 });
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
-                    if ((root[iB].children[isB].attr[0][attr[j]] == null)||(root[iB].children[isB].attr[0][attr[j]] == 'undefined'))
-                    {
-                    // console.log(root[iB].children[isB].attr[0][attr[i]] );
-                    }
-                    else{
-                       // console.log(root[iB].children[isB].top[attr[j]]);
+                    if ((datafirstChild[isB].attr[0][attr[j]] == null) || (datafirstChild[isB].attr[0][attr[j]] == 'undefined')) {
+                        // console.log(root[iB].children[isB].attr[0][attr[i]] );
+                    } else {
+                        //console.log(root[iB].children[isB].attr[0][attr[j]]);
+                        console.log(datafirstChild[isB].attr[0]);
+
                         d3.select(this).selectAll(".childBubble" + iB)
-                            .data(root[iB].children[isB].attr[0][attr[j]])
+                            .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
                             .append("rect")
-                            // .attr("r", function (d) {
-                            //     return oR / 5.0;
-                            // })
                             .attr("width", 60)
                             .attr("height", 60)
-                            .attr("rx",10)
-                            .attr("ry",10)
-                            .attr("class", "subchildBubble subchildBubble"+root[iB].children[isB].id)
+                            .attr("rx", 10)
+                            .attr("ry", 10)
+                            .attr("class", "subchildBubble subchildBubble" + root[iB].children[isB].id)
                             .attr("x", function (d) {
                                 let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("x");
                                 return parentXValue;
@@ -188,39 +185,42 @@ $(document).ready(function () {
                                     }
                                 });
                                 return color;
-                            }).on("click", function(d) {
-                            let TitleValueID = d3.select(this).attr('id');
-                            d3.selectAll(".description").style('opacity', '0');
-                            d3.selectAll("#"+TitleValueID).style('opacity', '1.0');
-                            textvisible = true;
+                            }).on("click", function (d) {
+                            let url;
+                            $.grep(root[j].children, function (e) {
+                                if (d === e.id) {
+                                    url = e.url;
+                                    window.open(url);
+                                }
+                            });
                         });
                     }
                 }
 
                 let angle;
-                let num = d3.selectAll('.subchildBubble'+root[iB].children[isB].id).size();
+                let num = d3.selectAll('.subchildBubble' + root[iB].children[isB].id).size();
 
-                d3.selectAll('.subchildBubble'+root[iB].children[isB].id).each(function (d, i) {
+                d3.selectAll('.subchildBubble' + root[iB].children[isB].id).each(function (d, i) {
                     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                    angle = (i / (num/2)) * Math.PI;
-                    let x = ((oR+400  * Math.cos(angle)))+Math.round(parentXValue)+290; // Calculate the x position of the element.
-                    let y = ((oR+250  * Math.sin(angle)))+Math.round(parentYValue)+200; // Calculate the y position of the element.
+                    angle = (i / (num / 2)) * Math.PI;
+                    let x = ((oR + 350 * Math.cos(angle))) + Math.round(parentXValue) + 400; // Calculate the x position of the element.
+                    let y = ((oR + 250 * Math.sin(angle))) + Math.round(parentYValue) + 200; // Calculate the y position of the element.
                     d3.select(this).attr("x", x);
                     d3.select(this).attr("y", y);
                 }).on("mouseover", function (d, i) {
                     let elem = d3.select(this.parentNode).selectAll(".subchildBubble");
-                       elem.style('opacity', '1.0');
-                    })
+                    elem.style('opacity', '1.0');
+                })
             })
-            let textvisible=false;
+            let textvisible = false;
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
-                    if ((root[iB].children[isB].attr[0][attr[j]] == null) || (root[iB].children[isB].attr[0][attr[j]] == 'undefined')) {
-                //  console.log(root[iB].children[isB].attr[0][attr[i]] );
+                    if ((datafirstChild[isB].attr[0][attr[j]] == null) || (datafirstChild[isB].attr[0][attr[j]] == 'undefined')) {
+                        //  console.log(root[iB].children[isB].attr[0][attr[i]] );
                     } else {
                         d3.select(this).selectAll('.text')
-                            .data(root[iB].children[isB].attr[0][attr[j]])
+                            .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
                             .append("text")
                             .attr("class", "subchildBubbleText text" + root[iB].children[isB].id)
@@ -229,9 +229,8 @@ $(document).ready(function () {
                             })
                             .attr("cursor", "pointer")
                             //  .style("display", 'none')
-                            .style("fill", '#1e1e1e') // #1f77b4
-                            .attr("font-size", 19)
-                            .attr("ont-family", 'Open Sans Semibold')
+                            .style("fill", '#000000') // #1f77b4
+                            .attr("font-size", 20)
                             .attr("text-anchor", "left")
                             .attr("dominant-baseline", "middle")
                             .attr("alignment-baseline", "middle")
@@ -244,47 +243,49 @@ $(document).ready(function () {
                                 });
                                 return title;
                             }).call(wrapLabel, 200, 0)
-                            .on("click", function(d) {
+                            .on("click", function (d) {
+                                let url;
+
+                                $.grep(root[j].children, function (e) {
+                                    if (d === e.id) {
+                                        url = e.url;
+                                        window.open(url);
+                                    }
+                                });
+                            }).on("click", function (d) {
+
                             let TitleValueID = d3.select(this).attr('id');
                             d3.selectAll(".description").style('opacity', '0');
-                            d3.selectAll("#"+TitleValueID).style('opacity', '1.0');
+                            d3.selectAll("#" + TitleValueID).style('opacity', '1.0');
                             textvisible = true;
 
-                      });
+                        });
 
                         d3.select(this).selectAll('.description')
-                            .data(root[iB].children[isB].attr[0][attr[j]])
+                            .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
                             .append("text")
                             .attr("class", "description subchildBubbleText description" + root[iB].children[isB].id)
                             .attr("id", function (data, i) {
                                 return "subchildBubble_" + iB + "sub_" + i + root[iB].children[isB].id;
                             })
-                            .attr("font-size", 18)
+                            .attr("cursor", "pointer")
+                            // .style("opacity", '0')
+                            .style("fill", '#000000') // #1f77b4
+                            //.style("display", 'none')
+                            .attr("font-size", 14)
                             .attr("text-anchor", "left")
                             .style("opacity", '0')
                             .text(function (d, i) {
-                                let description;
-                                    $.grep(root[j].children, function (e) {
-                                        if (d === e.id) {
-                                            description = e.description;
-                                        }
-                                    });
-                                return description;
-                            })
-                            .call(wrapLabel, 200, 0)
+                                let title;
+                                $.grep(root[j].children, function (e) {
+                                    if (d === e.id) {
+                                        title = e.description;
+                                    }
+                                });
 
-                        d3.selectAll('.description')
-                            .selectAll('.tspan').filter(function(d, i, j) {
-                                return i >= 2; }).remove();
-
-                        d3.selectAll('.description')
-                            .data(root[iB].children[isB].attr[0][attr[j]])
-                            .append('tspan')
-                            .text('mehr Informationen')
-                            .attr('class', 'tspanMore')
-                            .attr('dy', 60)
-                            .on("click", function(d) {
+                                return title;
+                            }).call(wrapLabel, 200, 0).on("click", function (d) {
                             let url;
                             $.grep(root[j].children, function (e) {
                                 if (d === e.id) {
@@ -293,146 +294,71 @@ $(document).ready(function () {
                                 }
                             });
                         });
-
-                        // d3.selectAll('.tspanMore')
-                        //     .insert('tspan', ':last-child')
-                        //     .attr('dy', 60)
-                        //     .attr('dx', 100)
-                        //     .text('...');
-
                     }
                 }
                 /*CHILDREN END*/
 
                 let angle;
-                let num = d3.selectAll('.text'+root[iB].children[isB].id).size();
-                d3.selectAll('.text'+root[iB].children[isB].id).each(function (d, i) {
+                let num = d3.selectAll('.text' + root[iB].children[isB].id).size();
+                d3.selectAll('.text' + root[iB].children[isB].id).each(function (d, i) {
                     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
-                    angle = (i / (num/2)) * Math.PI;
-                    let cx = ((oR+400  * Math.cos(angle)))+Math.round(parentXValue)+380; // Calculate the x position of the element.
-                    let cy = ((oR+260  * Math.sin(angle)))+Math.round(parentYValue)+220; // Calculate the y position of the element.
+                    angle = (i / (num / 2)) * Math.PI;
+                    let cx = ((oR + 380 * Math.cos(angle))) + Math.round(parentXValue) + 380; // Calculate the x position of the element.
+                    let cy = ((oR + 260 * Math.sin(angle))) + Math.round(parentYValue) + 220; // Calculate the y position of the element.
                     d3.select(this).selectAll('tspan').attr("x", cx);
                     d3.select(this).selectAll('tspan').attr("y", cy);
                 })
-                let num1 = d3.selectAll('.description'+root[iB].children[isB].id).size();
-                d3.selectAll('.description'+root[iB].children[isB].id).each(function (d, i) {
+                let num1 = d3.selectAll('.description' + root[iB].children[isB].id).size();
+                d3.selectAll('.description' + root[iB].children[isB].id).each(function (d, i) {
                     let parentValueID = d3.select(this).attr('id');
-                    let parentXValue = $('#'+parentValueID).find('tspan').attr('x');
-                    let parentYValue = $('#'+parentValueID).find('tspan').attr('y');
-                    d3.select(this).selectAll('tspan').attr("x", parentXValue);
-                    d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue)+50);
+                   let parentXValue = $('#' + parentValueID).find('tspan').attr('x');
+                    let parentYValue = $('#' + parentValueID).find('tspan').attr('y');
+                     d3.select(this).selectAll('tspan').attr("x", parentXValue);
+                    d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue) + 50);
                 })
             })
 
         }
 
 
-    });
-
-    resetBubbles = function () {
-d3.selectAll('.description').style('opacity', '0.0');
-
-    }
-
-
-    function activateBubble(d, i) {
-        d3.event.stopPropagation();
-        d3.selectAll(".subchildBubble").style('display', 'none');
-        d3.selectAll(".subchildBubbleText").style('display', 'none');
-        d3.selectAll(".subchildBubbleText").style('font-weight', 'normal');
-// increase this bubble and decrease others
-        let t = svg.transition().duration(d3.event.altKey ? 7500 : 350);
-        t.selectAll(".topBubble")
-            .attr("r", function (d, ii) {
-                if (i == ii)
-                    return oR * 1.8;
-                else
-                    return oR * 0.8;
-            });
-
-        t.selectAll(".topBubbleText")
-            .attr("font-size", function (d, ii) {
-                if (i == ii)
-                    return 30 * 1.5;
-                else
-                    return 30 * 0.6;
-            })
-        ;
-
-        let signSide = -1;
-        for (let k = 0; k < nTop; k++) {
-            signSide = 1;
-            if (k < nTop / 2) signSide = 1;
-            t.selectAll(".childBubbleDescription" + k)
-                .attr("font-size", function () {
-                    return (k == i) ? 12 : 10;
-                })
-             .style("display", function () {
-                 return (k == i) ? 'block' : 'none';
-             });
-
-            t.selectAll(".childBubble" + k)
-                .attr("r", function () {
-                    return (k == i) ? (oR * 0.55) : (oR / 3.0);
-                })
-
-        }
-    }
-    function activateSubBubble(d, i) {
-// increase this bubble and decrease others
-        let t = svg.transition()
-            .duration(d3.event.altKey ? 7500 : 350);
-        t.select(".childBubble")
-
-    }
- window.onresize = resetBubbles;
-
-    function wrapLabel(text, width, lineheight) {
-
-
+        function wrapLabel(text, width, lineheight) {
             text.each(function () {
-            let textElement = d3.select(this); // d3 text element
-            const text = textElement.text(); // actual text
-            let words = text.split(/\s+/);// text with words in an array
-            let word; // current word to get handled
-            let line = []; // current text line to get handled
-            let lineNumber = 0; // current line number
-            let tspan = textElement.text(null)
-            // first tspan element (first line)
-                .append("tspan")
+                let textElement = d3.select(this); // d3 text element
+                const text = textElement.text(); // actual text
+                let words = text.split(/\s+/);// text with words in an array
+                let word; // current word to get handled
+                let line = []; // current text line to get handled
+                let lineNumber = 0; // current line number
+                let tspan = textElement.text(null)
+                // first tspan element (first line)
+                    .append("tspan")
 
                 //.attr("dy", lineNumber + "em");
-            // let domID = textElement.attr('id').slice(-1); // get dom id of text element
-            // let transform = textElement.attr("transform"); // get transformation of text element
-            // transform = transform.substring(10, transform.length - 1).split(' '); // get transformation x/y as array
+                // let domID = textElement.attr('id').slice(-1); // get dom id of text element
+                // let transform = textElement.attr("transform"); // get transformation of text element
+                // transform = transform.substring(10, transform.length - 1).split(' '); // get transformation x/y as array
 
-                    while (word = words.shift()) { // get first element and remove it from array
-                        line.push(word);
-                        tspan.text(line.join(" ")); // set new text to tspan
-
-                            if (tspan.node().getComputedTextLength() > width) { // check if tspan is wider than allowed
-                                // remove last word
-                                line.pop();
-                                tspan.text(line.join(" "));
-                                // removed word is start of next line
-                                line = [word];
-                                // append new tspan element and add word in case its the last word of the text
-                                tspan = textElement.append("tspan")
-                                    .attr('class', 'tspan')
-                                    .attr("x", 0)
-                                    .attr("y", 0)
-                                    .attr("dy", ++lineNumber * 1.3 + "em")
-                                    .text(word)
-
-                        }
-
-
+                while (word = words.shift()) { // get first element and remove it from array
+                    line.push(word);
+                    tspan.text(line.join(" ")); // set new text to tspan
+                    if (tspan.node().getComputedTextLength() > width) { // check if tspan is wider than allowed
+                        // remove last word
+                        line.pop();
+                        tspan.text(line.join(" "));
+                        // removed word is start of next line
+                        line = [word];
+                        // append new tspan element and add word in case its the last word of the text
+                        tspan = textElement.append("tspan")
+                        // .attr("x", 0)
+                        //.attr("y", 0)
+                            .attr("dy", ++lineNumber + lineheight + "em")
+                            .text(word);
                     }
+                }
 
-        });
+            });
+        }
 
-    }
-
-
+    });
 });

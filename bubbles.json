@@ -15,7 +15,7 @@
         "description": "Elektronische Prüfungen (E-Assessments) bieten eine Alternative zu Papierprüfungen.",
         "type": "Thema",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Elektronische-Pruefungen.aspx",
-        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
+        "attr": [{ "scenarios":["Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
 
       },
       {
