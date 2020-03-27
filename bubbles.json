@@ -5,7 +5,7 @@
         "id": "Blended-Learning",
         "title": "Blended Learning",
         "description": "... ist eine medienpädagogisch professionelle Realisierung der Verknüpfung von Präsenzphasen und moderierten Online-Phasen unter Einbeziehung verschiedener zumeist webbasierter Tools.",
-        "type": "Thema",
+        "type": "topics",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Blended-Learning.aspx",
         "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
       },
@@ -13,7 +13,7 @@
         "id": "Elektronische-Pruefungen",
         "title": "Elektronische Prüfungen",
         "description": "Elektronische Prüfungen (E-Assessments) bieten eine Alternative zu Papierprüfungen.",
-        "type": "Thema",
+        "type": "topics",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Elektronische-Pruefungen.aspx",
         "attr": [{ "scenarios":["Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
 
@@ -22,7 +22,7 @@
         "id": "Interaktion-in-der-Hochschullehre",
         "title": "Interaktion in der Lehre",
         "description": "Digitale Tools ermöglichen es den Lehrenden in Aus- und Weiterbildung, die Interaktion während Lehrveranstaltungen zu stärken und die Studierenden damit zu aktivieren und zu motivieren.",
-        "type": "Thema",
+        "type": "topics",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Interaktion-in-der-Hochschullehre.aspx",
         "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
 
@@ -31,7 +31,7 @@
         "id": "Videos-in-der-Lehre",
         "title": "Videos in der Lehre",
         "description": "Mit Videos können Lehr- und Lerninhalte auf ansprechende Weise veranschaulicht werden. Als Ergänzung zum Präsenzunterricht eignen sich kurze Lehrvideos gut, da sie den Studierenden auf Videoplattformen  oder eingebettet in ein Learning Management System jederzeit und überall zur Verfügung stehen.",
-        "type": "Thema",
+        "type": "topics",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Videos-in-der-Lehre.aspx",
         "attr": [{ "scenarios":["Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen"],"tools":["SWITCHinteract"]}]
       }
@@ -42,7 +42,7 @@
         "id" : "Interaktion%20in%20der%20Lehre%20st%C3%A4rken",
         "title": "Interaktion in der Lehre stärken",
         "description": "(​Inhalt dieser Seite ist in Bearbeitung.)",
-        "type": "scenario",
+        "type": "scenarios",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Interaktion%20in%20der%20Lehre%20st%C3%A4rken.aspx",
         "attr": [{ "topics" : [ "Interaktion-in-der-Hochschullehre" ],"tools":["Kahoot","Padlet"]}]
       },
@@ -50,7 +50,7 @@
         "id": "Lehrvideos",
         "title": "Lehrvideos",
         "description": "Die Nutzung von Videos zur Vermittlung von Inhalten ermöglicht den Studierenden, sich Lerninhalte in ihrem eigenen Tempo anzueignen. Für Hochschullehrende oder Dozierende der Weiterbildung bringt dies den Vorteil, dass das Wissen der Studierenden im Präsenzunterricht aufeinander abgestimmt ist und die Inhalte gemeinsam vertieft werden können.",
-        "type": "scenario",
+        "type": "scenarios",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Lehrvideos.aspx",
         "attr": [{ "topics" : [ "Videos-in-der-Lehre","Blended-Learning"]}]
       },
@@ -58,7 +58,7 @@
         "id": "Webinar",
         "title": "Webinar",
         "description": "Webinare (Seminare im Web) sind synchrone, interaktiv-ausgerichtete Online-Sessions. Sie bieten sich an, um örtlich flexible Online-Veranstaltungen als Ergänzung zu Präsenzveranstaltungen anzubieten.",
-        "type": "scenario",
+        "type": "scenarios",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Webinare-als-Erg%C3%A4nzung-des-Pr%C3%A4senzunterrichts.aspx",
         "attr": [{ "topics" : [ "Videos-in-der-Lehre","Blended-Learning"],"tools":["SWITCHinteract"]}]
       },
@@ -66,7 +66,7 @@
         "id": "Aufzeichnungen-von-Vorlesungen",
         "title": "Aufzeichnungen von Vorlesungen...",
         "description": "Für bestimmte Situationen kann es sinnvoll sein, Vorlesungen oder Vorträge live aufzuzeichnen («Live-Digitized-Lecture»). Diese Aufzeichnungen können synchron (Streaming) oder asynchron (als bearbeiteter Videocast) zum Einsatz kommen.",
-        "type": "scenario",
+        "type": "scenarios",
         "url": "http://localhost/hsle/index2.html",
         "attr": [{ "topics" : [ "Videos-in-der-Lehre","Blended-Learning"]}]
       }
@@ -77,7 +77,7 @@
         "id" : "Kahoot",
         "title": "Kahoot",
         "description": "Kahoot ist ein interaktives Quiztool. Die Lehrperson kann Fragen an die Wand projizieren, Lernende können mit ihren Mobilgeräten antworten.",
-        "type": "tool",
+        "type": "tools",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Kahoot.aspx",
         "attr": [{ "topics" : [ "Interaktion-in-der-Hochschullehre" ],"scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken"]}]
       },
@@ -85,7 +85,7 @@
         "id" : "Padlet",
         "title": "Padlet",
         "description": "Padlet ist eine Online-Pinnwand, auf welcher man gemeinsam Inhalte sammeln, gestalten und präsentieren kann.",
-        "type": "tool",
+        "type": "tools",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Padlet.aspx",
         "attr": [{ "topics" : [ "Interaktion-in-der-Hochschullehre" ],"scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken"]}]
       },
@@ -93,7 +93,7 @@
         "id" : "SWITCHinteract",
         "title": "SWITCHinteract",
         "description": "SWITCHinteract basiert auf der Software Adobe Connect und bietet eine breite Funktionspalette. Das Tool kann eingesetzt werden, um Webinare oder Online-Vorlesungen zu gestalten. Je nach Equipment ist es auch möglich, eine Lehrveranstaltung zu streamen.",
-        "type": "tool",
+        "type": "tools",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/SWITCHinteract.aspx",
         "attr": [{ "topics" : [ "Blended-Learning" ],"scenarios":["Webinar"]}]
       }

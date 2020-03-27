@@ -29,9 +29,9 @@ $(document).ready(function () {
 
     let currentNode;
     let currentId;
-    localStorage.clear();
+   //localStorage.clear();
     if (localStorage.getItem("currentNode") === null) {
-        localStorage.setItem('currentNode', 'tscenarios');
+        localStorage.setItem('currentNode', 'scenarios');
         localStorage.setItem('currentId', 'Aufzeichnungen-von-Vorlesungen');
         currentNode = 'scenarios';
         currentId = 'Aufzeichnungen-von-Vorlesungen';
@@ -39,6 +39,7 @@ $(document).ready(function () {
         currentNode = localStorage.getItem('currentNode');
         currentId = localStorage.getItem('currentId');
     }
+
     let dataTop;
     let datafirstChild;
 
@@ -46,7 +47,9 @@ $(document).ready(function () {
 //  console.log(error);
         dataTop = root.filter(function (d) {
             return d.name == currentNode
+
         });
+        console.log('cur', dataTop);
         let bubbleObj = svg.selectAll(".topBubble")
             .data(dataTop)
             .enter().append("g")
@@ -99,6 +102,7 @@ $(document).ready(function () {
             })
 
         for (let iB = 0; iB < 1; iB++) {
+
             datafirstChild = dataTop[0].children.filter(function (d) {
                 return d.id == currentId
             });
@@ -285,15 +289,67 @@ $(document).ready(function () {
                                 });
 
                                 return title;
-                            }).call(wrapLabel, 200, 0).on("click", function (d) {
-                            let url;
-                            $.grep(root[j].children, function (e) {
-                                if (d === e.id) {
-                                    url = e.url;
-                                    window.open(url);
-                                }
+                            }).call(wrapLabel, 200, 0);
+                        d3.selectAll('.description')
+                            .selectAll('.tspan').filter(function(d, i, j) {
+                            return i >= 2; }).remove();
+
+                        d3.selectAll('.description')
+                            .data(datafirstChild[isB].attr[0][attr[j]])
+                            .append('tspan')
+                            .text('mehr Informationen')
+                            .attr('class', 'tspanMore')
+                            .attr('id', function (d, i) {
+                                let id;
+                                $.grep(root[j].children, function (e) {
+                                    if (d === e.id) {
+                                        id = e.id;
+                                    }
+                                });
+
+                                return id;
+                            })
+                            .attr('type', function (d, i) {
+                                let id;
+                                $.grep(root[j].children, function (e) {
+                                    if (d === e.id) {
+                                        id = e.type;
+                                    }
+                                });
+
+                                return id;
+                            })
+                            .attr('dy', 60)
+                            .on("click", function(d) {
+                                let url;
+
+                                let currentNavId = d3.select(this).attr('id');
+                                let currentNavNode = d3.select(this).attr('type');
+
+                                localStorage.setItem('currentNode', currentNavNode);
+                                localStorage.setItem('currentId', currentNavId);
+
+                                url='/hsle'
+                                window.open(url, '_blank');
+
+
+                                $.grep(root[j].children, function (e) {
+                                    /*for later usage
+                                    if (d === e.id) {
+                                        url = e.url;
+                                        window.open(url);
+                                    }
+                                    */
+
+
+                                });
                             });
-                        });
+
+                        // d3.selectAll('.tspanMore')
+                        //     .insert('tspan', ':last-child')
+                        //     .attr('dy', 60)
+                        //     .attr('dx', 100)
+                        //     .text('...');
                     }
                 }
                 /*CHILDREN END*/
@@ -352,6 +408,7 @@ $(document).ready(function () {
                         tspan = textElement.append("tspan")
                         // .attr("x", 0)
                         //.attr("y", 0)
+                            .attr('class', 'tspan')
                             .attr("dy", ++lineNumber + lineheight + "em")
                             .text(word);
                     }
