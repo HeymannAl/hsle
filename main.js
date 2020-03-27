@@ -150,17 +150,15 @@ $(document).ready(function () {
                 });
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
-                    if ((root[iB].children[isB].top[attr[j]] == null)||(root[iB].children[isB].top[attr[j]] == 'undefined'))
+                    if ((root[iB].children[isB].attr[0][attr[j]] == null)||(root[iB].children[isB].attr[0][attr[j]] == 'undefined'))
                     {
                     // console.log(root[iB].children[isB].attr[0][attr[i]] );
                     }
                     else{
                        // console.log(root[iB].children[isB].top[attr[j]]);
-                        console.log('arr'+root[iB].children[isB].attr[0][attr[j]]);
                         d3.select(this).selectAll(".childBubble" + iB)
                             .data(root[iB].children[isB].attr[0][attr[j]])
                             .enter()
-
                             .append("rect")
                             // .attr("r", function (d) {
                             //     return oR / 5.0;
@@ -239,7 +237,6 @@ $(document).ready(function () {
                             .attr("alignment-baseline", "middle")
                             .text(function (d) {
                                 let title;
-                                console.log(root[j]);
                                 $.grep(root[j].children, function (e) {
                                     if (d === e.id) {
                                         title = e.title;
