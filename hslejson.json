@@ -1,44 +1,602 @@
-{
-    "topics": [
-        {
-            "id": "thema_1",
-            "title": "Video in der Lehre",
-            "type": "Thema",
-            "url": "https://inside.fhnw.ch/hsle2025/Seiten/Video_In_Der_Lehre.aspx",
-            "scenarios" : [ "scenario_1", "scenario_2"]
-        },
-        {
-            "id": "thema_2",
-            "title": "Videokonferenzen",
-            "type": "Thema",
-            "url": "https://inside.fhnw.ch/hsle2025/Seiten/Videoconfs.aspx",
-            "scenarios": [ "scenario_2"],
-            "tools" : [ "tool_1" ]
-        }
+[
+  {
+    "color": "rgb(31, 119, 180)",
+    "name": "topics",
+    "children": [
+      {
+        "url": "/hsle2025/Seiten/Online-zusammenarbeiten.aspx",
+        "id": "7beb3a57-e786-4091-b20f-baab2130575d",
+        "type": "topics",
+        "description": "Die Online-Zusammenarbeit in Arbeits- und Projektgruppen hat im Zeitalter der vernetzten Welt einen hohen Stellenwert. Die FHNW fördert diese Art der Zusammenarbeit, indem sie den Mitarbeitenden und Studierenden entsprechende Tools zur Verfügung stellt.",
+        "title": "Online zusammenarbeiten",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "7beb3a57-e786-4091-b20f-baab2130575d"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/inverted-classroom.aspx",
+        "id": "b3b080d7-e01f-4822-9521-aa1b79c78693",
+        "type": "topics",
+        "description": "Inverted Classroom (umgedrehter Unterricht) bezeichnet ein Lehr- und Lernszenario, bei der die übliche Reihenfolge der Lernaktivitäten umgedreht wird. Im schulischen Kontext wird häufig auch der Begriff «Flipped Classroom» verwendet.",
+        "title": "Inverted Classroom – umgedrehter Unterricht",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "b3b080d7-e01f-4822-9521-aa1b79c78693"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/LearningHubs.aspx",
+        "id": "4bfd476a-4d08-40f4-bb9b-78a84c5ff6d2",
+        "type": "topics",
+        "description": "Sie wollen einen Workshop durchführen, die gängigen Unterrichts- und Seminarräume erfüllen aber ihre Anforderungen an das Lern-/Lehrsetting nicht? Sie möchten Ihre Vorlesung elektronisch aufzeichnen (Audio/Video), wissen aber nicht wie und wo? Dann lassen Sie sich von den FHNW Learning Hubs inspirieren.",
+        "title": "Neue Lern- und Lehrräume",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "4bfd476a-4d08-40f4-bb9b-78a84c5ff6d2"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Blended-Learning.aspx",
+        "id": "082e45f4-5869-4888-ad90-77742c42c816",
+        "type": "topics",
+        "description": "Blended Learning (gemischtes Lernen) – so könnte eine allgemeine Definition lauten – ist eine medienpädagogisch professionelle Realisierung der Verknüpfung von Präsenzphasen und moderierten, das heisst durch die Lehrperson begleitete Online-Phasen unter Einbeziehung verschiedener zumeist webbasierter Tools.",
+        "title": "Blended Learning",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "082e45f4-5869-4888-ad90-77742c42c816"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Interaktion-in-der-Hochschullehre.aspx",
+        "id": "77aa4a09-dd80-429a-9bbf-7ef8bd58aef8",
+        "type": "topics",
+        "description": "Digitale Tools ermöglichen es den Lehrenden in Aus- und Weiterbildung, die Interaktion während Lehrveranstaltungen zu stärken und die Studierenden damit zu aktivieren und zu motivieren.",
+        "title": "Interaktion in der Lehre",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "77aa4a09-dd80-429a-9bbf-7ef8bd58aef8"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Medien-und-Recht.aspx",
+        "id": "211c1b37-5267-490d-9ce9-26a321cbae55",
+        "type": "topics",
+        "description": "Im Zusammenhang mit digitalen Medien und Technologien und deren Einsatz in der Hochschullehre stellen sich verschiedene rechtliche Fragen. Lehrende finden hier eine Zusammenstellung der wichtigsten Merkblätter, Links und Veranstaltungen zum Thema.",
+        "title": "Medien und Recht",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "211c1b37-5267-490d-9ce9-26a321cbae55"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Informelles-Lernen-und-Vernetzung-mittels-Social-Media.aspx",
+        "id": "073c6865-3b18-4d51-8eed-caeaf32273da",
+        "type": "topics",
+        "description": "Die Vernetzung in Wissensgemeinschaften auf digitalen Kanälen gewinnt in der Hochschulwelt an Bedeutung. So werden heute im Hochschulkontext vermehrt soziale Medien wie Twitter oder Facebook eingesetzt, um fachspezifisches Wissen zu aktualisieren, zu teilen und sich in einer Wissensgemeinschaft zu vernetzen.",
+        "title": "Vernetzung mit Social Media",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "2eca9c11-57b6-464b-8137-1bff567fa428"
+            ],
+            "topics": [
+              "073c6865-3b18-4d51-8eed-caeaf32273da"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Test-Thema-.aspx",
+        "id": "4a87be24-838a-44e2-8bf0-8407169b65a1",
+        "type": "topics",
+        "description": "Diese Seite dient lediglich zu Test-Zwecken. Hier werden diverse Konstellationen und Darstellungen getestet. Die Seite ist NICHT Bestandteil des Pilots... ",
+        "title": "MASTER-Seite: zu Test-Zwecken A",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "4a87be24-838a-44e2-8bf0-8407169b65a1"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Videos-in-der-Lehre.aspx",
+        "id": "f1883e59-e71d-4612-86f8-4c2125230e53",
+        "type": "topics",
+        "description": "Mit Videos können Lehr- und Lerninhalte auf ansprechende Weise veranschaulicht werden. Als Ergänzung zum Präsenzunterricht eignen sich kurze Lehrvideos gut, da sie den Studierenden auf Videoplattformen  oder eingebettet in ein Learning Management System jederzeit und überall zur Verfügung stehen.",
+        "title": "Videos in der Lehre",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "f1883e59-e71d-4612-86f8-4c2125230e53"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Elektronische-Pruefungen.aspx",
+        "id": "3b1fa2d5-7a91-4d5b-91b3-ecab50a8db73",
+        "type": "topics",
+        "description": "Neue Technologien verändern die Prüfungsformen an den Hochschulen. Elektronische Prüfungen (E-Assessments) bieten eine Alternative zu Papierprüfungen. ",
+        "title": "Elektronische Prüfungen",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [],
+            "topics": [
+              "3b1fa2d5-7a91-4d5b-91b3-ecab50a8db73"
+            ]
+          }
+        ]
+      }
     ],
-    "scenarios": [
-        {
-            "id" : "scenario_1",
-            "title": "Blended Learning",
-            "type": "scenario",
-            "url": "...",
-            "topics" : [ "thema_1" ]
-        },
-        {
-            "id": "scenario_2",
-            "title": "Webinar",
-            "type": "scenario",
-            "url": "...",
-            "topics" : [ "thema_1" , "thema_2"],
-            "tools" : [ "tool_1 "]
-        }
+    "details": "Themen"
+  },
+  {
+    "color": "rgb(255, 127, 14)",
+    "name": "scenarios",
+    "children": [
+      {
+        "url": "/hsle2025/Seiten/Szenario_Visualisieren-mit-Tablet-und-Stift.aspx",
+        "id": "3645cd65-3327-4b8a-969e-9c44f634d1fc",
+        "type": "scenarios",
+        "description": "Mit Hilfe verschiedener Software können in einer Lehrveranstaltung mit Tablet und Stift komplexe Sachverhalte anschaulich visualisiert werden. Diese Inhalte werden direkt per Beamer an die Leinwand projiziert und können als PDF oder PowerPoint-Dateien gespeichert werden, so dass sie für die Studierenden jederzeit verfügbar sind.",
+        "title": "Visualisieren mit Tablet und Stift",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "3645cd65-3327-4b8a-969e-9c44f634d1fc"
+            ],
+            "topics": [
+              "77aa4a09-dd80-429a-9bbf-7ef8bd58aef8"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Interaktion in der Lehre stärken.aspx",
+        "id": "97fd4378-e2ce-4982-9e0e-38f86d23070e",
+        "type": "scenarios",
+        "description": "(​Inhalt dieser Seite ist in Bearbeitung.)",
+        "title": "Interaktion in der Lehre stärken",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "97fd4378-e2ce-4982-9e0e-38f86d23070e"
+            ],
+            "topics": [
+              "77aa4a09-dd80-429a-9bbf-7ef8bd58aef8"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Wissen-mit-Twitter-aktualisieren-und-vernetzen.aspx",
+        "id": "5ed1a7e9-20ba-4e64-9e9f-4fafc9ee1744",
+        "type": "scenarios",
+        "description": "Lehrende und Studierende können sich über Twitter mit Personen aus demselben Interessensgebiet vernetzen und den Kanal als Informationsquelle verwenden.",
+        "title": "Wissen mit Twitter aktualisieren und vernetzen",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "5ed1a7e9-20ba-4e64-9e9f-4fafc9ee1744"
+            ],
+            "topics": [
+              "073c6865-3b18-4d51-8eed-caeaf32273da"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Lehrvideos.aspx",
+        "id": "95050c21-0537-4d3a-8cb1-a524a4919dab",
+        "type": "scenarios",
+        "description": "Die Nutzung von Videos zur Vermittlung von Inhalten ermöglicht den Studierenden, sich Lerninhalte in ihrem eigenen Tempo anzueignen. Für Hochschullehrende oder Dozierende der Weiterbildung bringt dies den Vorteil, dass das Wissen der Studierenden im Präsenzunterricht aufeinander abgestimmt ist und die Inhalte gemeinsam vertieft werden können.",
+        "title": "Lehrvideos",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "95050c21-0537-4d3a-8cb1-a524a4919dab"
+            ],
+            "topics": [
+              "f1883e59-e71d-4612-86f8-4c2125230e53",
+              "082e45f4-5869-4888-ad90-77742c42c816",
+              "b3b080d7-e01f-4822-9521-aa1b79c78693"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Lerneinheiten-einfach-mit-eigenen-Videos-ergänzen.aspx",
+        "id": "f2f8785c-f1af-4d59-9666-96f3e4851cd9",
+        "type": "scenarios",
+        "description": "Digitale Tools zur Erstellung einfacher, kurzer Video-Elemente können Lehrende darin unterstützen, den Studierenden ergänzende Lehrinhalte zur Verfügung zu stellen. Damit können Präsenzveranstaltungen entlastet werden und die Studierenden können sich die Inhalte jederzeit und überall aneignen.",
+        "title": "Eigene Videos erstellen",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "f2f8785c-f1af-4d59-9666-96f3e4851cd9"
+            ],
+            "topics": [
+              "f1883e59-e71d-4612-86f8-4c2125230e53",
+              "082e45f4-5869-4888-ad90-77742c42c816"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Webinare-als-Ergänzung-des-Präsenzunterrichts.aspx",
+        "id": "a19baa18-092f-4f33-9f9a-d3cf1b0a2877",
+        "type": "scenarios",
+        "description": "Webinare (Seminare im Web) sind synchrone, interaktiv-ausgerichtete Online-Sessions. Sie bieten sich an, um örtlich flexible Online-Veranstaltungen als Ergänzung zu Präsenzveranstaltungen anzubieten.",
+        "title": "Webinar",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "a19baa18-092f-4f33-9f9a-d3cf1b0a2877"
+            ],
+            "topics": [
+              "f1883e59-e71d-4612-86f8-4c2125230e53",
+              "082e45f4-5869-4888-ad90-77742c42c816"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Videokonferenzen.aspx",
+        "id": "155a56a2-4d22-4da5-88ad-863cdcd4e6bf",
+        "type": "scenarios",
+        "description": "An der FHNW wird für Videokonferenzen die Software «Cisco Jabber» und eine servergebundene Videokonferenzlösung von Cisco verwendet. ",
+        "title": "Videokonferenzen",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "155a56a2-4d22-4da5-88ad-863cdcd4e6bf"
+            ],
+            "topics": [
+              "7beb3a57-e786-4091-b20f-baab2130575d"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Aufzeichnungen-von-Vorlesungen-oder-Vorträgen.aspx",
+        "id": "75fd4319-3fb5-4111-8bef-491176393ece",
+        "type": "scenarios",
+        "description": "Für bestimmte Situationen kann es sinnvoll sein, Vorlesungen oder Vorträge live aufzuzeichnen («Live-Digitized-Lecture»). Diese Aufzeichnungen können synchron (Streaming) oder asynchron (als bearbeiteter Videocast) zum Einsatz kommen.",
+        "title": "Aufzeichnungen von Vorlesungen oder Vorträgen",
+        "attr": [
+          {
+            "tools": [],
+            "scenarios": [
+              "75fd4319-3fb5-4111-8bef-491176393ece"
+            ],
+            "topics": [
+              "f1883e59-e71d-4612-86f8-4c2125230e53",
+              "082e45f4-5869-4888-ad90-77742c42c816"
+            ]
+          }
+        ]
+      }
     ],
-    "tools": [
-        {
-            "id" : "tool_1",
-            "title": "SwitchVideoConferenceTool",
-            "type": "tool",
-            "url": "..."
-        }
-    ]
-}
+    "details": "Szenarien"
+  },
+  {
+    "color": "rgb(44, 160, 44)",
+    "name": "tools",
+    "children": [
+      {
+        "url": "/hsle2025/Seiten/Groups-Inside-FHNW.aspx",
+        "id": "12e60d1b-639d-4c6d-aba3-4d7ca9dbec21",
+        "type": "tool",
+        "description": "Groups Inside FHNW ist eine Kollaborationsplattform, welche die virtuelle Zusammenarbeit innerhalb der FHNW, aber auch mit externen Partnerinnen und Partnern ermöglicht.",
+        "title": "Groups Inside FHNW",
+        "attr": [
+          {
+            "tools": [
+              "12e60d1b-639d-4c6d-aba3-4d7ca9dbec21"
+            ],
+            "scenarios": [],
+            "topics": [
+              "7beb3a57-e786-4091-b20f-baab2130575d"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Kahoot.aspx",
+        "id": "80549e63-4853-42e2-97e0-56dd20f754b0",
+        "type": "tool",
+        "description": "Kahoot ist ein interaktives Quiztool. Die Lehrperson kann Fragen an die Wand projizieren, Lernende können mit ihren Mobilgeräten antworten. ",
+        "title": "Kahoot",
+        "attr": [
+          {
+            "tools": [
+              "80549e63-4853-42e2-97e0-56dd20f754b0"
+            ],
+            "scenarios": [
+              "97fd4378-e2ce-4982-9e0e-38f86d23070e"
+            ],
+            "topics": []
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/OBS-Studio.aspx",
+        "id": "b2e912fd-20b0-4386-9826-88b2ffb39246",
+        "type": "tools",
+        "description": "Mit der Software OBS Studio kann mit relativ wenig Aufwand ein professionell wirkendes Video erstellt werden. Dabei fällt das Schneiden und die weitere Bearbeitung oft komplett weg, da verschiedene Szenen, Titel, usw. schon vorgängig definiert werden können. ",
+        "title": "OBS-Studio",
+        "attr": [
+          {
+            "tools": [
+              "b2e912fd-20b0-4386-9826-88b2ffb39246"
+            ],
+            "scenarios": [
+              "f2f8785c-f1af-4d59-9666-96f3e4851cd9"
+            ],
+            "topics": []
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/SWITCHinteract.aspx",
+        "id": "57095d75-168b-43c9-8ea3-08f1b1c0674b",
+        "type": "tools",
+        "description": "SWITCHinteract basiert auf der Software Adobe Connect und bietet eine breite Funktionspalette. Das Tool kann eingesetzt werden, um Webinare oder Online-Vorlesungen zu gestalten. Je nach Equipment ist es auch möglich, eine Lehrveranstaltung zu streamen. ",
+        "title": "SWITCHinteract",
+        "attr": [
+          {
+            "tools": [
+              "57095d75-168b-43c9-8ea3-08f1b1c0674b"
+            ],
+            "scenarios": [
+              "a19baa18-092f-4f33-9f9a-d3cf1b0a2877"
+            ],
+            "topics": []
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/OneNote.aspx",
+        "id": "7f454192-d818-4b82-be4b-9cebfd26e30a",
+        "type": "tools",
+        "description": "OneNote funktioniert als digitales Notizbuch und bietet viele sinnvolle Funktionen für die Zusammenarbeit mit anderen Personen.",
+        "title": "OneNote",
+        "attr": [
+          {
+            "tools": [
+              "7f454192-d818-4b82-be4b-9cebfd26e30a"
+            ],
+            "scenarios": [],
+            "topics": [
+              "7beb3a57-e786-4091-b20f-baab2130575d"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/SWITCHdrive.aspx",
+        "id": "0bbe6569-5663-411f-a2be-872aed4b17ca",
+        "type": "tools",
+        "description": "Auf dem Online-Speicherplatz SWITCHdrive können Dateien gespeichert und gemeinsam bearbeitet werden. Sämtliche an einer Schweizer Hochschule tätigen sowie studierenden Personen haben über das AAI-Login Zugang zur Ablage. ",
+        "title": "SWITCHdrive",
+        "attr": [
+          {
+            "tools": [
+              "0bbe6569-5663-411f-a2be-872aed4b17ca"
+            ],
+            "scenarios": [],
+            "topics": [
+              "7beb3a57-e786-4091-b20f-baab2130575d"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Safe-Exam-Browser.aspx",
+        "id": "790c6d55-58ed-4ade-a92c-df8856a4414b",
+        "type": "tools",
+        "description": "An den Hochschulen steigt die Nachfrage nach digitalen Prüfungsformaten. Deshalb werden mit zwei Pilotprojekten Erfahrungen im Bereich E-Assessment gesammelt.",
+        "title": "Safe Exam Browser (SEB)",
+        "attr": [
+          {
+            "tools": [
+              "790c6d55-58ed-4ade-a92c-df8856a4414b"
+            ],
+            "scenarios": [],
+            "topics": [
+              "3b1fa2d5-7a91-4d5b-91b3-ecab50a8db73"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/SWITCHtube.aspx",
+        "id": "86da23f4-a17e-4439-a0da-f49cb920fb38",
+        "type": "tools",
+        "description": "SWITCHtube ist eine Plattform für alle Hochschulangehörigen, um Videos aus Lehre und Forschung hochzuladen. Im Gegensatz zur bekannten Videoplattform YouTube sind in SWITCHtube Abstufungen bei den Zugangsrechten möglich. ",
+        "title": "SWITCHtube",
+        "attr": [
+          {
+            "tools": [
+              "86da23f4-a17e-4439-a0da-f49cb920fb38"
+            ],
+            "scenarios": [
+              "f2f8785c-f1af-4d59-9666-96f3e4851cd9"
+            ],
+            "topics": []
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/BeAxi.aspx",
+        "id": "48b93c2c-5d90-4ef0-98a9-14c673e60eb1",
+        "type": "tools",
+        "description": "BeAxi ist eine netzunabhängige Prüfungssoftware, welche für die Erstellung, Durchführung und Auswertung von Prüfungen eingesetzt wird. Die Prüfungsdurchführung erfolgt auf iPads. Geschlossene und offene Fragen sind möglich. ",
+        "title": "BeAxi",
+        "attr": [
+          {
+            "tools": [
+              "48b93c2c-5d90-4ef0-98a9-14c673e60eb1"
+            ],
+            "scenarios": [],
+            "topics": [
+              "3b1fa2d5-7a91-4d5b-91b3-ecab50a8db73"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Lernstick.aspx",
+        "id": "0027b176-75ad-4773-99f9-85b7ec6fb8e3",
+        "type": "tools",
+        "description": "Der Lernstick ist eine mobile und sichere Lern- und Arbeitsumgebung, die auf externen Speichermedien installiert werden kann.",
+        "title": "Lernstick",
+        "attr": [
+          {
+            "tools": [
+              "0027b176-75ad-4773-99f9-85b7ec6fb8e3"
+            ],
+            "scenarios": [],
+            "topics": [
+              "3b1fa2d5-7a91-4d5b-91b3-ecab50a8db73"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Mentimeter.aspx",
+        "id": "9a680b61-7e09-46b2-a160-cb084579ed30",
+        "type": "tools",
+        "description": null,
+        "title": "Mentimeter",
+        "attr": [
+          {
+            "tools": [
+              "9a680b61-7e09-46b2-a160-cb084579ed30"
+            ],
+            "scenarios": [
+              "97fd4378-e2ce-4982-9e0e-38f86d23070e"
+            ],
+            "topics": []
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Padlet.aspx",
+        "id": "9f5ecb25-fe9b-47a8-84ef-46997f67dd90",
+        "type": "tools",
+        "description": "Padlet ist eine Online-Pinnwand, auf welcher man gemeinsam Inhalte sammeln, gestalten und präsentieren kann.",
+        "title": "Padlet",
+        "attr": [
+          {
+            "tools": [
+              "9f5ecb25-fe9b-47a8-84ef-46997f67dd90"
+            ],
+            "scenarios": [
+              "97fd4378-e2ce-4982-9e0e-38f86d23070e"
+            ],
+            "topics": []
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/EduPadTeampad.aspx",
+        "id": "90816d40-2e60-46d6-a269-50f438c087b0",
+        "type": "tools",
+        "description": "«EduPad» (ehemals EtherPad Lite) ist ein sehr einfacher Texteditor, in dem bis zu 15 Personen gleichzeitig an einem Text arbeiten können. ",
+        "title": "EduPad/Teampad",
+        "attr": [
+          {
+            "tools": [
+              "90816d40-2e60-46d6-a269-50f438c087b0"
+            ],
+            "scenarios": [],
+            "topics": []
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Zotero.aspx",
+        "id": "99364690-bb90-4465-9a78-a2223e041891",
+        "type": "tools",
+        "description": "Mit dem Literaturverwaltungsprogramm Zotero können Offline- und Online-Quellen gesammelt, verwaltet und zitiert werden. Zotero läuft auf allen gängigen Betriebssystemen und Browsern. Die Grundversion ist für alle Anwenderinnen und Anwender kostenlos.",
+        "title": "Zotero",
+        "attr": [
+          {
+            "tools": [
+              "99364690-bb90-4465-9a78-a2223e041891"
+            ],
+            "scenarios": [],
+            "topics": [
+              "7beb3a57-e786-4091-b20f-baab2130575d"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "/hsle2025/Seiten/Moodle.aspx",
+        "id": "f6c0b608-5bd4-4d74-ad76-372aace9699d",
+        "type": "tools",
+        "description": "Moodle ist die Lernplattform der FHNW. Sie eignet sich vor allem für formative und diagnostische E-Assessments.\n\n(​Inhalt dieser Seite ist in Bearbeitung.)",
+        "title": "Moodle",
+        "attr": [
+          {
+            "tools": [
+              "f6c0b608-5bd4-4d74-ad76-372aace9699d"
+            ],
+            "scenarios": [],
+            "topics": [
+              "3b1fa2d5-7a91-4d5b-91b3-ecab50a8db73"
+            ]
+          }
+        ]
+      }
+    ],
+    "details": "Tools"
+  }
+]

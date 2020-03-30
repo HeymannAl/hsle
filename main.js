@@ -29,12 +29,12 @@ $(document).ready(function () {
 
     let currentNode;
     let currentId;
-   //localStorage.clear();
+   localStorage.clear();
     if (localStorage.getItem("currentNode") === null) {
         localStorage.setItem('currentNode', 'scenarios');
-        localStorage.setItem('currentId', 'Aufzeichnungen-von-Vorlesungen');
+        localStorage.setItem('currentId', '3645cd65-3327-4b8a-969e-9c44f634d1fc');
         currentNode = 'scenarios';
-        currentId = 'Aufzeichnungen-von-Vorlesungen';
+        currentId = '3645cd65-3327-4b8a-969e-9c44f634d1fc';
     } else {
         currentNode = localStorage.getItem('currentNode');
         currentId = localStorage.getItem('currentId');
@@ -43,7 +43,7 @@ $(document).ready(function () {
     let dataTop;
     let datafirstChild;
 
-    d3.json("bubbles.json", function (error, root) {
+    d3.json("hslejson.json", function (error, root) {
 //  console.log(error);
         dataTop = root.filter(function (d) {
             return d.name == currentNode
@@ -75,10 +75,6 @@ $(document).ready(function () {
             .attr("r", function (d) {
                 return oR;
             })
-            // .attr("cy", (h + oR) / 3)
-            // .attr("cx", function (d, i) {
-            //     return oR * (3 * (1 + i) - 1);
-            // })
             .style("fill", function (d, i) {
                 return d.color;
             })
@@ -129,7 +125,6 @@ $(document).ready(function () {
                 .attr("class", "childBubbleText childBubbleText" + iB)
                 .attr("x", 350)
                 .attr("y", 360)
-                //  .style("display", 'none')
                 .attr("text-anchor", "left")
                 .style("fill", '#000000') // #1f77b4
                 .attr("font-size", 25)
@@ -169,6 +164,9 @@ $(document).ready(function () {
                             .attr("rx", 10)
                             .attr("ry", 10)
                             .attr("class", "subchildBubble subchildBubble" + root[iB].children[isB].id)
+                            .attr("id", function (data, i) {
+                                return "rectsubchildBubble_" + iB + "sub_" + i + root[iB].children[isB].id;
+                            })
                             .attr("x", function (d) {
                                 let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("x");
                                 return parentXValue;
@@ -190,13 +188,12 @@ $(document).ready(function () {
                                 });
                                 return color;
                             }).on("click", function (d) {
-                            let url;
-                            $.grep(root[j].children, function (e) {
-                                if (d === e.id) {
-                                    url = e.url;
-                                    window.open(url);
-                                }
-                            });
+
+                            let TitleValueID = d3.select(this).attr('id').substring(4);
+                            d3.selectAll(".description").style('opacity', '0');
+                            d3.selectAll("#" + TitleValueID).style('opacity', '1.0');
+                            textvisible = true;
+
                         });
                     }
                 }
@@ -209,12 +206,9 @@ $(document).ready(function () {
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
                     angle = (i / (num / 2)) * Math.PI;
                     let x = ((oR + 350 * Math.cos(angle))) + Math.round(parentXValue) + 400; // Calculate the x position of the element.
-                    let y = ((oR + 250 * Math.sin(angle))) + Math.round(parentYValue) + 200; // Calculate the y position of the element.
+                    let y = ((oR + 150 * Math.sin(angle))) + Math.round(parentYValue) + 300; // Calculate the y position of the element.
                     d3.select(this).attr("x", x);
                     d3.select(this).attr("y", y);
-                }).on("mouseover", function (d, i) {
-                    let elem = d3.select(this.parentNode).selectAll(".subchildBubble");
-                    elem.style('opacity', '1.0');
                 })
             })
             let textvisible = false;
@@ -360,8 +354,8 @@ $(document).ready(function () {
                     let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
                     let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
                     angle = (i / (num / 2)) * Math.PI;
-                    let cx = ((oR + 380 * Math.cos(angle))) + Math.round(parentXValue) + 380; // Calculate the x position of the element.
-                    let cy = ((oR + 260 * Math.sin(angle))) + Math.round(parentYValue) + 220; // Calculate the y position of the element.
+                    let cx = ((oR + 350 * Math.cos(angle))) + Math.round(parentXValue) + 500; // Calculate the x position of the element.
+                    let cy = ((oR + 150 * Math.sin(angle))) + Math.round(parentYValue) + 330; // Calculate the y position of the element.
                     d3.select(this).selectAll('tspan').attr("x", cx);
                     d3.select(this).selectAll('tspan').attr("y", cy);
                 })

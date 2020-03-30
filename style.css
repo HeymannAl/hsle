@@ -1,11 +1,7 @@
 #mainBubble {
     background: #fff;
-    border: solid 1px #ddd;
-    box-shadow: 0 0 4px rgba(0,0,0,0);
     font: 10px sans-serif;
-    height: 800px;
-    position: relative;
-    width: 80%;
+
 }
 
 #mainBubble svg {
@@ -19,11 +15,10 @@
     stroke: #666;
     stroke-width: 1.5px;
 }
-.subchildBubble {
+.subchildBubble, .subchildBubbleText {
     animation: float 6s ease-in-out infinite;
     animation-duration: 4s;
     animation-iteration-count: 2;
-
 }
 .description{
     font-family: "Open Sans Regular", Verdana, Arial;
