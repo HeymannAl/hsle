@@ -1,21 +1,22 @@
-#mainBubble {
+#mainWrapper {
     background: #fff;
     font: 10px sans-serif;
 
 }
 
-#mainBubble svg {
+#mainWrapper svg {
     left: 0;
     position: absolute;
     top: 0;
 }
 
-#mainBubble circle.topBubble {
+#mainWrapper circle.topBubble {
     fill: #aaa;
     stroke: #666;
     stroke-width: 1.5px;
 }
-.subchildBubble, .subchildBubbleText {
+.subchildRect, .subchildRectText {
+    cursor: default;
     animation: float 6s ease-in-out infinite;
     animation-duration: 4s;
     animation-iteration-count: 2;
@@ -46,6 +47,16 @@
     cursor:pointer;
 }
 
+.fadein, .fadeout {
+    opacity: 0;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+}
+.fadein {
+    opacity: 1;
+}
 /*@keyframes float {*/
     /*0% {opacity: 0.1}*/
     /*49%{opacity: 0.5}*/

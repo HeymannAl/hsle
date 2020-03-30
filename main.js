@@ -7,16 +7,16 @@ $(document).ready(function () {
 
     let attr = ['topics', 'scenarios', 'tools'];
 
-    let svgContainer = d3.select("#mainBubble")
+    let svgContainer = d3.select("#mainWrapper")
         .style("height", h + "px");
 
-    let svg = d3.select("#mainBubble").append("svg")
-        .attr("class", "mainBubbleSVG")
+    let svg = d3.select("#mainWrapper").append("svg")
+        .attr("class", "mainWrapperSVG")
         .attr("width", '1500')
         .attr("height", h)
 
     let mainNote = svg.append("text")
-        .attr("id", "bubbleItemNote")
+        .attr("id", "rectItemNote")
         .attr("x", 10)
         .attr("y", w / 2 - 15)
         .attr("font-size", 12)
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
     let currentNode;
     let currentId;
-   localStorage.clear();
+    localStorage.clear();
     if (localStorage.getItem("currentNode") === null) {
         localStorage.setItem('currentNode', 'scenarios');
         localStorage.setItem('currentId', '3645cd65-3327-4b8a-969e-9c44f634d1fc');
@@ -44,18 +44,12 @@ $(document).ready(function () {
     let datafirstChild;
 
     d3.json("hslejson.json", function (error, root) {
-//  console.log(error);
+
         dataTop = root.filter(function (d) {
             return d.name == currentNode
 
         });
-        console.log('cur', dataTop);
-        let bubbleObj = svg.selectAll(".topBubble")
-            .data(dataTop)
-            .enter().append("g")
-            .attr("id", function (d, i) {
-                return "topBubbleAndText_" + i
-            });
+
 
         nTop = 100;
 
@@ -64,38 +58,6 @@ $(document).ready(function () {
         h = Math.ceil(w / nTop * 2);
         svgContainer.style("height", h + "px");
 
-//  let colVals = d3.scaleOrdinal(d3.schemeCategory10);
-
-        bubbleObj.append("rect")
-            .attr("class", "topBubble")
-            .attr("id", function (d, i) {
-
-                return "topBubble" + i;
-            })
-            .attr("r", function (d) {
-                return oR;
-            })
-            .style("fill", function (d, i) {
-                return d.color;
-            })
-            .style("opacity", 0.3)
-            .style("display", "none")
-
-
-        bubbleObj.append("text")
-            .attr("class", "topBubbleText")
-            .style("fill", function (d, i) {
-                return d.color;
-            })
-            .attr("font-size", 60)
-            .attr("text-anchor", "middle")
-            .attr("dominant-baseline", "middle")
-            .attr("alignment-baseline", "middle")
-            .attr("cursor", "pointer")
-            .style("display", "none")
-            .text(function (d) {
-                return d.details
-            })
 
         for (let iB = 0; iB < 1; iB++) {
 
@@ -122,40 +84,35 @@ $(document).ready(function () {
                 })
 
             groups.append('text')
-                .attr("class", "childBubbleText childBubbleText" + iB)
+                .attr("class", "childRectText childRectText" + iB)
                 .attr("x", 350)
                 .attr("y", 360)
                 .attr("text-anchor", "left")
-                .style("fill", '#000000') // #1f77b4
+                .style("fill", '#000000')
                 .attr("font-size", 25)
                 .attr("cursor", "pointer")
                 .text(function (d) {
                     return d.title
                 })
 
-            /*MAIN END*/
-
-
-            /*CHILDREN BEGIN*/
-            var groupsChild = svg.selectAll(".childBubble" + iB)
+            var groupsChild = svg.selectAll(".childRect" + iB)
                 .data(datafirstChild)
                 .enter()
                 .append("g")
                 .attr("class", "gbarChild");
             groupsChild.append('rect')
-                .attr("class", "childBubble123" + iB + " childBubble")
+                .attr("class", "childRect123" + iB + " childRect")
                 .attr("id", function (d, i) {
-                    return "childBubble_" + iB + "sub_" + i;
+                    return "childRect_" + iB + "sub_" + i;
                 });
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
                     if ((datafirstChild[isB].attr[0][attr[j]] == null) || (datafirstChild[isB].attr[0][attr[j]] == 'undefined')) {
-                        // console.log(root[iB].children[isB].attr[0][attr[i]] );
-                    } else {
-                        //console.log(root[iB].children[isB].attr[0][attr[j]]);
-                        console.log(datafirstChild[isB].attr[0]);
 
-                        d3.select(this).selectAll(".childBubble" + iB)
+                    } else {
+
+
+                        d3.select(this).selectAll(".childRect" + iB)
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
                             .append("rect")
@@ -163,22 +120,21 @@ $(document).ready(function () {
                             .attr("height", 60)
                             .attr("rx", 10)
                             .attr("ry", 10)
-                            .attr("class", "subchildBubble subchildBubble" + root[iB].children[isB].id)
+                            .attr("class", "subchildRect subchildRect" + root[iB].children[isB].id)
                             .attr("id", function (data, i) {
-                                return "rectsubchildBubble_" + iB + "sub_" + i + root[iB].children[isB].id;
+
+                                return "childRect_" + iB + "sub_" + data + root[iB].children[isB].id;
                             })
                             .attr("x", function (d) {
-                                let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("x");
+                                let parentXValue = d3.select(this.parentNode).select('.childRect').attr("x");
                                 return parentXValue;
                             })
                             .attr("y", function (d) {
-                                let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("y");
+                                let parentYValue = d3.select(this.parentNode).select('.childRect').attr("y");
                                 return parentYValue;
                             })
 
-                            // .attr("transform", translate)
                             .attr("cursor", "pointer")
-                            //  .style("display", 'none')
                             .style('fill', function (d) {
                                 let color;
                                 $.grep(root[j].children, function (e) {
@@ -189,21 +145,23 @@ $(document).ready(function () {
                                 return color;
                             }).on("click", function (d) {
 
-                            let TitleValueID = d3.select(this).attr('id').substring(4);
-                            d3.selectAll(".description").style('opacity', '0');
-                            d3.selectAll("#" + TitleValueID).style('opacity', '1.0');
-                            textvisible = true;
+                            let TitleValueID = d3.select(this).attr('id');
+                            d3.selectAll(".description").classed('fadeout', 'false');
+                            d3.selectAll(".description").classed('fadeout', 'true');
+                            d3.selectAll("." + TitleValueID).classed('fadeout', 'false');
+                            d3.selectAll("." + TitleValueID).classed('fadein', 'true');
+
 
                         });
                     }
                 }
 
                 let angle;
-                let num = d3.selectAll('.subchildBubble' + root[iB].children[isB].id).size();
+                let num = d3.selectAll('.subchildRect' + root[iB].children[isB].id).size();
 
-                d3.selectAll('.subchildBubble' + root[iB].children[isB].id).each(function (d, i) {
-                    let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                    let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                d3.selectAll('.subchildRect' + root[iB].children[isB].id).each(function (d, i) {
+                    let parentXValue = d3.select(this.parentNode).select('.childRect').attr("cx");
+                    let parentYValue = d3.select(this.parentNode).select('.childRect').attr("cy");
                     angle = (i / (num / 2)) * Math.PI;
                     let x = ((oR + 350 * Math.cos(angle))) + Math.round(parentXValue) + 400; // Calculate the x position of the element.
                     let y = ((oR + 150 * Math.sin(angle))) + Math.round(parentYValue) + 300; // Calculate the y position of the element.
@@ -215,19 +173,18 @@ $(document).ready(function () {
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
                     if ((datafirstChild[isB].attr[0][attr[j]] == null) || (datafirstChild[isB].attr[0][attr[j]] == 'undefined')) {
-                        //  console.log(root[iB].children[isB].attr[0][attr[i]] );
-                    } else {
+                         } else {
                         d3.select(this).selectAll('.text')
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
                             .append("text")
-                            .attr("class", "subchildBubbleText text" + root[iB].children[isB].id)
+                            .attr("class", "subchildRectText text" + root[iB].children[isB].id)
                             .attr("id", function (data, i) {
-                                return "subchildBubble_" + iB + "sub_" + i + root[iB].children[isB].id;
+                                return "subchildRect_" + iB + "sub_" + data + root[iB].children[isB].id;
+
                             })
                             .attr("cursor", "pointer")
-                            //  .style("display", 'none')
-                            .style("fill", '#000000') // #1f77b4
+                            .style("fill", '#000000')
                             .attr("font-size", 20)
                             .attr("text-anchor", "left")
                             .attr("dominant-baseline", "middle")
@@ -252,10 +209,12 @@ $(document).ready(function () {
                                 });
                             }).on("click", function (d) {
 
-                            let TitleValueID = d3.select(this).attr('id');
-                            d3.selectAll(".description").style('opacity', '0');
-                            d3.selectAll("#" + TitleValueID).style('opacity', '1.0');
-                            textvisible = true;
+                            let TitleValueID = d3.select(this).attr('id').substr(3);
+
+                            d3.selectAll(".description").classed('fadeout', 'true');
+                            d3.selectAll("." + TitleValueID).classed('fadeout', 'false');
+                            d3.selectAll("." + TitleValueID).classed('fadein', 'true');
+
 
                         });
 
@@ -263,9 +222,11 @@ $(document).ready(function () {
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
                             .append("text")
-                            .attr("class", "description subchildBubbleText description" + root[iB].children[isB].id)
-                            .attr("id", function (data, i) {
-                                return "subchildBubble_" + iB + "sub_" + i + root[iB].children[isB].id;
+                            .attr("class", function (data, i) {
+                                return "description fadeout subchildRectText description" + root[iB].children[isB].id + " childRect_" + iB + "sub_" + data + root[iB].children[isB].id
+                            })
+                                .attr("id", function (data, i) {
+                                return "subchildRect_" + iB + "sub_" + data + root[iB].children[isB].id;
                             })
                             .attr("cursor", "pointer")
                             // .style("opacity", '0')
@@ -273,7 +234,6 @@ $(document).ready(function () {
                             //.style("display", 'none')
                             .attr("font-size", 14)
                             .attr("text-anchor", "left")
-                            .style("opacity", '0')
                             .text(function (d, i) {
                                 let title;
                                 $.grep(root[j].children, function (e) {
@@ -285,8 +245,9 @@ $(document).ready(function () {
                                 return title;
                             }).call(wrapLabel, 200, 0);
                         d3.selectAll('.description')
-                            .selectAll('.tspan').filter(function(d, i, j) {
-                            return i >= 2; }).remove();
+                            .selectAll('.tspan').filter(function (d, i, j) {
+                            return i >= 2;
+                        }).remove();
 
                         d3.selectAll('.description')
                             .data(datafirstChild[isB].attr[0][attr[j]])
@@ -296,11 +257,10 @@ $(document).ready(function () {
                             .attr('id', function (d, i) {
                                 let id;
                                 $.grep(root[j].children, function (e) {
-                                    if (d === e.id) {
-                                        id = e.id;
+                                        if (d === e.id) {
+                                            id = e.id;
                                     }
                                 });
-
                                 return id;
                             })
                             .attr('type', function (d, i) {
@@ -314,7 +274,7 @@ $(document).ready(function () {
                                 return id;
                             })
                             .attr('dy', 60)
-                            .on("click", function(d) {
+                            .on("click", function (d) {
                                 let url;
 
                                 let currentNavId = d3.select(this).attr('id');
@@ -323,9 +283,8 @@ $(document).ready(function () {
                                 localStorage.setItem('currentNode', currentNavNode);
                                 localStorage.setItem('currentId', currentNavId);
 
-                                url='/hsle'
+                                url = '/hsle'
                                 window.open(url, '_blank');
-
 
                                 $.grep(root[j].children, function (e) {
                                     /*for later usage
@@ -334,8 +293,6 @@ $(document).ready(function () {
                                         window.open(url);
                                     }
                                     */
-
-
                                 });
                             });
 
@@ -346,13 +303,12 @@ $(document).ready(function () {
                         //     .text('...');
                     }
                 }
-                /*CHILDREN END*/
 
                 let angle;
                 let num = d3.selectAll('.text' + root[iB].children[isB].id).size();
                 d3.selectAll('.text' + root[iB].children[isB].id).each(function (d, i) {
-                    let parentXValue = d3.select(this.parentNode).select('.childBubble').attr("cx");
-                    let parentYValue = d3.select(this.parentNode).select('.childBubble').attr("cy");
+                    let parentXValue = d3.select(this.parentNode).select('.childRect').attr("cx");
+                    let parentYValue = d3.select(this.parentNode).select('.childRect').attr("cy");
                     angle = (i / (num / 2)) * Math.PI;
                     let cx = ((oR + 350 * Math.cos(angle))) + Math.round(parentXValue) + 500; // Calculate the x position of the element.
                     let cy = ((oR + 150 * Math.sin(angle))) + Math.round(parentYValue) + 330; // Calculate the y position of the element.
@@ -362,15 +318,13 @@ $(document).ready(function () {
                 let num1 = d3.selectAll('.description' + root[iB].children[isB].id).size();
                 d3.selectAll('.description' + root[iB].children[isB].id).each(function (d, i) {
                     let parentValueID = d3.select(this).attr('id');
-                   let parentXValue = $('#' + parentValueID).find('tspan').attr('x');
+                    let parentXValue = $('#' + parentValueID).find('tspan').attr('x');
                     let parentYValue = $('#' + parentValueID).find('tspan').attr('y');
-                     d3.select(this).selectAll('tspan').attr("x", parentXValue);
+                    d3.select(this).selectAll('tspan').attr("x", parentXValue);
                     d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue) + 50);
                 })
             })
-
         }
-
 
         function wrapLabel(text, width, lineheight) {
             text.each(function () {
@@ -383,12 +337,6 @@ $(document).ready(function () {
                 let tspan = textElement.text(null)
                 // first tspan element (first line)
                     .append("tspan")
-
-                //.attr("dy", lineNumber + "em");
-                // let domID = textElement.attr('id').slice(-1); // get dom id of text element
-                // let transform = textElement.attr("transform"); // get transformation of text element
-                // transform = transform.substring(10, transform.length - 1).split(' '); // get transformation x/y as array
-
                 while (word = words.shift()) { // get first element and remove it from array
                     line.push(word);
                     tspan.text(line.join(" ")); // set new text to tspan
