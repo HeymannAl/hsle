@@ -7,7 +7,7 @@
         "description": "... ist eine medienpädagogisch professionelle Realisierung der Verknüpfung von Präsenzphasen und moderierten Online-Phasen unter Einbeziehung verschiedener zumeist webbasierter Tools.",
         "type": "topics",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Blended-Learning.aspx",
-        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
+        "attr": [{ "scenarios":["Interaktion", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
       },
       {
         "id": "Elektronische-Pruefungen",
@@ -24,7 +24,7 @@
         "description": "Digitale Tools ermöglichen es den Lehrenden in Aus- und Weiterbildung, die Interaktion während Lehrveranstaltungen zu stärken und die Studierenden damit zu aktivieren und zu motivieren.",
         "type": "topics",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Interaktion-in-der-Hochschullehre.aspx",
-        "attr": [{ "scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
+        "attr": [{ "scenarios":["Interaktion", "Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
 
       },
       {
@@ -33,13 +33,13 @@
         "description": "Mit Videos können Lehr- und Lerninhalte auf ansprechende Weise veranschaulicht werden. Als Ergänzung zum Präsenzunterricht eignen sich kurze Lehrvideos gut, da sie den Studierenden auf Videoplattformen  oder eingebettet in ein Learning Management System jederzeit und überall zur Verfügung stehen.",
         "type": "topics",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Videos-in-der-Lehre.aspx",
-        "attr": [{ "scenarios":["Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen-oder-Vortr%C3%A4gen"],"tools":["SWITCHinteract"]}]
+        "attr": [{ "scenarios":["Lehrvideos", "Webinar", "Aufzeichnungen-von-Vorlesungen"],"tools":["SWITCHinteract"]}]
       }
     ]},
   {"name": "scenarios", "details": "Szenarien","color": "rgb(255, 127, 14)",
     "children":[
       {
-        "id" : "Interaktion%20in%20der%20Lehre%20st%C3%A4rken",
+        "id" : "Interaktion",
         "title": "Interaktion in der Lehre stärken",
         "description": "(​Inhalt dieser Seite ist in Bearbeitung.)",
         "type": "scenarios",
@@ -87,7 +87,7 @@
         "description": "Padlet ist eine Online-Pinnwand, auf welcher man gemeinsam Inhalte sammeln, gestalten und präsentieren kann.",
         "type": "tools",
         "url": "https://welcome.inside.fhnw.ch/hsle2025/Seiten/Padlet.aspx",
-        "attr": [{ "topics" : [ "Interaktion-in-der-Hochschullehre" ],"scenarios":["Interaktion%20in%20der%20Lehre%20st%C3%A4rken"]}]
+        "attr": [{ "topics" : [ "Interaktion-in-der-Hochschullehre" ],"scenarios":["Interaktion"]}]
       },
       {
         "id" : "SWITCHinteract",

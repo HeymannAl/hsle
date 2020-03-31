@@ -29,12 +29,12 @@ $(document).ready(function () {
 
     let currentNode;
     let currentId;
-    localStorage.clear();
+    //localStorage.clear();
     if (localStorage.getItem("currentNode") === null) {
-        localStorage.setItem('currentNode', 'scenarios');
-        localStorage.setItem('currentId', '3645cd65-3327-4b8a-969e-9c44f634d1fc');
-        currentNode = 'scenarios';
-        currentId = '3645cd65-3327-4b8a-969e-9c44f634d1fc';
+        localStorage.setItem('currentNode', 'topics');
+        localStorage.setItem('currentId', 'Blended-Learning');
+        currentNode = 'topics';
+        currentId = 'Blended-Learning';
     } else {
         currentNode = localStorage.getItem('currentNode');
         currentId = localStorage.getItem('currentId');
@@ -43,7 +43,7 @@ $(document).ready(function () {
     let dataTop;
     let datafirstChild;
 
-    d3.json("hslejson.json", function (error, root) {
+    d3.json("testdata.json", function (error, root) {
 
         dataTop = root.filter(function (d) {
             return d.name == currentNode
@@ -218,7 +218,7 @@ $(document).ready(function () {
 
                         });
 
-                        d3.select(this).selectAll('.description')
+                        d3.select(this).selectAll('.description1')
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
                             .append("text")
@@ -249,6 +249,18 @@ $(document).ready(function () {
                             return i >= 2;
                         }).remove();
 
+                      //   const arr = new Array();
+                      //       $.each(datafirstChild[isB].attr[0][attr[j]], function(key, value) {
+                      //           if ((value == null) || (value == 'undefined') || datafirstChild[isB].attr[0][attr[j]] > 0) {
+                      //           }
+                      //           else {
+                      //
+                      //               arr.push(value);
+                      //
+                      //           }
+                      //
+                      //       });
+                      //   console.log(arr);
                         d3.selectAll('.description')
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .append('tspan')
@@ -257,8 +269,8 @@ $(document).ready(function () {
                             .attr('id', function (d, i) {
                                 let id;
                                 $.grep(root[j].children, function (e) {
-                                        if (d === e.id) {
-                                            id = e.id;
+                                    if (d === e.id) {
+                                        id = e.id;
                                     }
                                 });
                                 return id;
@@ -274,6 +286,7 @@ $(document).ready(function () {
                                 return id;
                             })
                             .attr('dy', 60)
+                            .data(datafirstChild[isB].attr[0][attr[j]])
                             .on("click", function (d) {
                                 let url;
 
@@ -315,11 +328,13 @@ $(document).ready(function () {
                     d3.select(this).selectAll('tspan').attr("x", cx);
                     d3.select(this).selectAll('tspan').attr("y", cy);
                 })
-                let num1 = d3.selectAll('.description' + root[iB].children[isB].id).size();
-                d3.selectAll('.description' + root[iB].children[isB].id).each(function (d, i) {
+                d3.selectAll('.description' + root[iB].children[isB].id)
+                    .each(function (d, i) {
                     let parentValueID = d3.select(this).attr('id');
+
                     let parentXValue = $('#' + parentValueID).find('tspan').attr('x');
                     let parentYValue = $('#' + parentValueID).find('tspan').attr('y');
+
                     d3.select(this).selectAll('tspan').attr("x", parentXValue);
                     d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue) + 50);
                 })
