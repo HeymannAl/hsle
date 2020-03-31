@@ -15,18 +15,6 @@ $(document).ready(function () {
         .attr("width", '1500')
         .attr("height", h)
 
-    let mainNote = svg.append("text")
-        .attr("id", "rectItemNote")
-        .attr("x", 10)
-        .attr("y", w / 2 - 15)
-        .attr("font-size", 12)
-        .attr("dominant-baseline", "middle")
-        .attr("alignment-baseline", "middle")
-        .style("fill", "#888888")
-        .text(function (d) {
-            return "";
-        });
-
     let currentNode;
     let currentId;
     //localStorage.clear();
@@ -78,19 +66,14 @@ $(document).ready(function () {
                 .attr("ry", 15)
                 .attr("width", 100)
                 .attr("height", 100)
-                .attr("cursor", "pointer")
                 .style("fill", function (d, i) {
                     return root[iB].color;
                 })
 
             groups.append('text')
                 .attr("class", "childRectText childRectText" + iB)
-                .attr("x", 350)
+                .attr("x", 540)
                 .attr("y", 360)
-                .attr("text-anchor", "left")
-                .style("fill", '#000000')
-                .attr("font-size", 25)
-                .attr("cursor", "pointer")
                 .text(function (d) {
                     return d.title
                 })
@@ -110,8 +93,6 @@ $(document).ready(function () {
                     if ((datafirstChild[isB].attr[0][attr[j]] == null) || (datafirstChild[isB].attr[0][attr[j]] == 'undefined')) {
 
                     } else {
-
-
                         d3.select(this).selectAll(".childRect" + iB)
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
@@ -134,7 +115,6 @@ $(document).ready(function () {
                                 return parentYValue;
                             })
 
-                            .attr("cursor", "pointer")
                             .style('fill', function (d) {
                                 let color;
                                 $.grep(root[j].children, function (e) {
@@ -144,14 +124,11 @@ $(document).ready(function () {
                                 });
                                 return color;
                             }).on("click", function (d) {
-
                             let TitleValueID = d3.select(this).attr('id');
                             d3.selectAll(".description").classed('fadeout', 'false');
                             d3.selectAll(".description").classed('fadeout', 'true');
                             d3.selectAll("." + TitleValueID).classed('fadeout', 'false');
                             d3.selectAll("." + TitleValueID).classed('fadein', 'true');
-
-
                         });
                     }
                 }
@@ -169,11 +146,11 @@ $(document).ready(function () {
                     d3.select(this).attr("y", y);
                 })
             })
-            let textvisible = false;
+
             groupsChild.each(function (d, isB) {
                 for (let j = 0; j < attr.length; j++) {
                     if ((datafirstChild[isB].attr[0][attr[j]] == null) || (datafirstChild[isB].attr[0][attr[j]] == 'undefined')) {
-                         } else {
+                    } else {
                         d3.select(this).selectAll('.text')
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .enter()
@@ -183,12 +160,6 @@ $(document).ready(function () {
                                 return "subchildRect_" + iB + "sub_" + data + root[iB].children[isB].id;
 
                             })
-                            .attr("cursor", "pointer")
-                            .style("fill", '#000000')
-                            .attr("font-size", 20)
-                            .attr("text-anchor", "left")
-                            .attr("dominant-baseline", "middle")
-                            .attr("alignment-baseline", "middle")
                             .text(function (d) {
                                 let title;
                                 $.grep(root[j].children, function (e) {
@@ -223,17 +194,11 @@ $(document).ready(function () {
                             .enter()
                             .append("text")
                             .attr("class", function (data, i) {
-                                return "description fadeout subchildRectText description" + root[iB].children[isB].id + " childRect_" + iB + "sub_" + data + root[iB].children[isB].id
+                                return "description fadeout subchildRectsubText description" + root[iB].children[isB].id + " childRect_" + iB + "sub_" + data + root[iB].children[isB].id
                             })
-                                .attr("id", function (data, i) {
+                            .attr("id", function (data, i) {
                                 return "subchildRect_" + iB + "sub_" + data + root[iB].children[isB].id;
                             })
-                            .attr("cursor", "pointer")
-                            // .style("opacity", '0')
-                            .style("fill", '#000000') // #1f77b4
-                            //.style("display", 'none')
-                            .attr("font-size", 14)
-                            .attr("text-anchor", "left")
                             .text(function (d, i) {
                                 let title;
                                 $.grep(root[j].children, function (e) {
@@ -241,7 +206,6 @@ $(document).ready(function () {
                                         title = e.description;
                                     }
                                 });
-
                                 return title;
                             }).call(wrapLabel, 200, 0);
                         d3.selectAll('.description')
@@ -249,21 +213,8 @@ $(document).ready(function () {
                             return i >= 2;
                         }).remove();
 
-                      //   const arr = new Array();
-                      //       $.each(datafirstChild[isB].attr[0][attr[j]], function(key, value) {
-                      //           if ((value == null) || (value == 'undefined') || datafirstChild[isB].attr[0][attr[j]] > 0) {
-                      //           }
-                      //           else {
-                      //
-                      //               arr.push(value);
-                      //
-                      //           }
-                      //
-                      //       });
-                      //   console.log(arr);
-                        d3.selectAll('.description')
+                        d3.selectAll('.description').append('tspan')
                             .data(datafirstChild[isB].attr[0][attr[j]])
-                            .append('tspan')
                             .text('mehr Informationen')
                             .attr('class', 'tspanMore')
                             .attr('id', function (d, i) {
@@ -307,6 +258,20 @@ $(document).ready(function () {
                                     }
                                     */
                                 });
+
+                                //   const arr = new Array();
+                                //       $.each(datafirstChild[isB].attr[0][attr[j]], function(key, value) {
+                                //           if ((value == null) || (value == 'undefined') || datafirstChild[isB].attr[0][attr[j]] > 0) {
+                                //           }
+                                //           else {
+                                //
+                                //               arr.push(value);
+                                //
+                                //           }
+                                //
+                                //       });
+                                //   console.log(arr);
+
                             });
 
                         // d3.selectAll('.tspanMore')
@@ -330,14 +295,14 @@ $(document).ready(function () {
                 })
                 d3.selectAll('.description' + root[iB].children[isB].id)
                     .each(function (d, i) {
-                    let parentValueID = d3.select(this).attr('id');
+                        let parentValueID = d3.select(this).attr('id');
 
-                    let parentXValue = $('#' + parentValueID).find('tspan').attr('x');
-                    let parentYValue = $('#' + parentValueID).find('tspan').attr('y');
+                        let parentXValue = $('#' + parentValueID).find('tspan').attr('x');
+                        let parentYValue = $('#' + parentValueID).find('tspan').attr('y');
 
-                    d3.select(this).selectAll('tspan').attr("x", parentXValue);
-                    d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue) + 50);
-                })
+                        d3.select(this).selectAll('tspan').attr("x", parentXValue);
+                        d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue) + 50);
+                    })
             })
         }
 
@@ -363,8 +328,6 @@ $(document).ready(function () {
                         line = [word];
                         // append new tspan element and add word in case its the last word of the text
                         tspan = textElement.append("tspan")
-                        // .attr("x", 0)
-                        //.attr("y", 0)
                             .attr('class', 'tspan')
                             .attr("dy", ++lineNumber + lineheight + "em")
                             .text(word);

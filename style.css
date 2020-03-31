@@ -15,36 +15,41 @@
     stroke: #666;
     stroke-width: 1.5px;
 }
+
 .subchildRect, .subchildRectText {
     cursor: default;
     animation: float 6s ease-in-out infinite;
     animation-duration: 4s;
     animation-iteration-count: 2;
 }
-.description{
+
+.description {
     font-family: "Open Sans Regular", Verdana, Arial;
     font-size: 13px;
     fill: #444444;
 }
+
 @keyframes float {
     0% {
-        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
         transform: translatey(0px);
     }
     50% {
-        box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
         transform: translatey(-20px);
     }
     100% {
-        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
         transform: translatey(0px);
     }
 }
-.gbar text, .gbar rect, tspan{
-   cursor: default;
+
+.gbar text, .gbar rect, tspan {
+    cursor: default;
 }
-.tspanMore{
-    cursor:pointer;
+
+.tspanMore {
+    cursor: pointer;
 }
 
 .fadein, .fadeout {
@@ -54,13 +59,38 @@
     -webkit-transition: opacity 0.4s ease-in-out;
     transition: opacity 0.4s ease-in-out;
 }
+
 .fadein {
     opacity: 1;
 }
+
 /*@keyframes float {*/
-    /*0% {opacity: 0.1}*/
-    /*49%{opacity: 0.5}*/
-    /*50% {opacity: 1}*/
+/*0% {opacity: 0.1}*/
+/*49%{opacity: 0.5}*/
+/*50% {opacity: 1}*/
 /*}*/
 
 /*float{animation: blink 0.3s infinite;}*/
+
+/*Styling elements*/
+.tspanMore {
+    text-decoration: underline;
+}
+
+text {
+    text-anchor: start;
+    fill: #000000;
+    cursor: pointer;
+}
+
+.childRectText {
+    font-size: 23px;
+}
+
+.subchildRectText {
+    font-size: 20px;
+}
+
+.subchildRectsubText {
+    font-size: 13px;
+}
