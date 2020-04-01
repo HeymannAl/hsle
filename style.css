@@ -84,6 +84,7 @@ text {
 }
 
 .childRectText {
+    text-anchor: start;
     font-size: 23px;
 }
 

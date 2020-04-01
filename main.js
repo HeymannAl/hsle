@@ -58,8 +58,12 @@ $(document).ready(function () {
                 .enter()
                 .append("g")
                 .attr("class", "gbar");
-
-            groups.append('rect')
+            var groupsChild = svg.selectAll(".childRect" + iB)
+                .data(datafirstChild)
+                .enter()
+                .append("g")
+                .attr("class", "gbarChild");
+            groupsChild.append('rect')
                 .attr("x", 400)
                 .attr("y", 300)
                 .attr("rx", 15)
@@ -70,19 +74,15 @@ $(document).ready(function () {
                     return root[iB].color;
                 })
 
-            groups.append('text')
+            groupsChild.append('text')
                 .attr("class", "childRectText childRectText" + iB)
                 .attr("x", 540)
                 .attr("y", 360)
                 .text(function (d) {
                     return d.title
-                })
+                }).call(wrapLabel, 200, true)
 
-            var groupsChild = svg.selectAll(".childRect" + iB)
-                .data(datafirstChild)
-                .enter()
-                .append("g")
-                .attr("class", "gbarChild");
+
             groupsChild.append('rect')
                 .attr("class", "childRect123" + iB + " childRect")
                 .attr("id", function (d, i) {
@@ -168,7 +168,8 @@ $(document).ready(function () {
                                     }
                                 });
                                 return title;
-                            }).call(wrapLabel, 200, 0)
+                            })
+                            .call(wrapLabel, 200, false)
                             .on("click", function (d) {
                                 let url;
 
@@ -207,7 +208,7 @@ $(document).ready(function () {
                                     }
                                 });
                                 return title;
-                            }).call(wrapLabel, 200, 0);
+                            }).call(wrapLabel, 200, false);
                         d3.selectAll('.description')
                             .selectAll('.tspan').filter(function (d, i, j) {
                             return i >= 2;
@@ -306,7 +307,7 @@ $(document).ready(function () {
             })
         }
 
-        function wrapLabel(text, width, lineheight) {
+        function wrapLabel(text, width, top) {
             text.each(function () {
                 let textElement = d3.select(this); // d3 text element
                 const text = textElement.text(); // actual text
@@ -317,6 +318,9 @@ $(document).ready(function () {
                 let tspan = textElement.text(null)
                 // first tspan element (first line)
                     .append("tspan")
+                    .attr('dx', 0)
+
+
                 while (word = words.shift()) { // get first element and remove it from array
                     line.push(word);
                     tspan.text(line.join(" ")); // set new text to tspan
@@ -329,8 +333,13 @@ $(document).ready(function () {
                         // append new tspan element and add word in case its the last word of the text
                         tspan = textElement.append("tspan")
                             .attr('class', 'tspan')
-                            .attr("dy", ++lineNumber + lineheight + "em")
+
+                            .attr("dy", ++lineNumber + "em")
                             .text(word);
+                        if (top==true)
+                        {
+                            d3.selectAll('.tspan').attr('dx', -165)
+                        }
                     }
                 }
 
