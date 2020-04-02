@@ -209,7 +209,7 @@ $(document).ready(function () {
                             return i >= 2;
                         }).remove();
 
-                        d3.selectAll('.'+data).append('tspan')
+                        d3.selectAll('.description').append('tspan')
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .text('mehr Informationen')
                             .attr('class', 'tspanMore tspanMore'+root[iB].children[isB].id)
