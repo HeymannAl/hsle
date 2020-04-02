@@ -80,7 +80,7 @@ $(document).ready(function () {
                 .attr("y", 360)
                 .text(function (d) {
                     return d.title
-                }).call(wrapLabel, 200, true)
+                }).call(wrapLabel, 200, 0.2, true)
 
 
             groupsChild.append('rect')
@@ -169,7 +169,7 @@ $(document).ready(function () {
                                 });
                                 return title;
                             })
-                            .call(wrapLabel, 200, false)
+                            .call(wrapLabel, 200, 0, false)
                             .on("click", function (d) {
                                 let url;
 
@@ -184,9 +184,8 @@ $(document).ready(function () {
                             let TitleValueID = d3.select(this).attr('id').substr(3);
 
                             d3.selectAll(".description").classed('fadeout', 'true');
-                            d3.selectAll("." + TitleValueID).classed('fadeout', 'false');
+                           // d3.selectAll("." + TitleValueID).classed('fadeout', 'false');
                             d3.selectAll("." + TitleValueID).classed('fadein', 'true');
-
 
                         });
 
@@ -195,7 +194,7 @@ $(document).ready(function () {
                             .enter()
                             .append("text")
                             .attr("class", function (data, i) {
-                                return "description fadeout subchildRectsubText description" + root[iB].children[isB].id + " childRect_" + iB + "sub_" + data + root[iB].children[isB].id
+                                return "description fadeout "+data+" subchildRectsubText description" + root[iB].children[isB].id + " childRect_" + iB + "sub_" + data + root[iB].children[isB].id
                             })
                             .attr("id", function (data, i) {
                                 return "subchildRect_" + iB + "sub_" + data + root[iB].children[isB].id;
@@ -208,16 +207,17 @@ $(document).ready(function () {
                                     }
                                 });
                                 return title;
-                            }).call(wrapLabel, 200, false);
+                            }).call(wrapLabel, 200, 0, false);
+
                         d3.selectAll('.description')
                             .selectAll('.tspan').filter(function (d, i, j) {
                             return i >= 2;
                         }).remove();
 
-                        d3.selectAll('.description').append('tspan')
+                        d3.selectAll('.'+data).append('tspan')
                             .data(datafirstChild[isB].attr[0][attr[j]])
                             .text('mehr Informationen')
-                            .attr('class', 'tspanMore')
+                            .attr('class', 'tspanMore tspanMore'+root[iB].children[isB].id)
                             .attr('id', function (d, i) {
                                 let id;
                                 $.grep(root[j].children, function (e) {
@@ -238,7 +238,6 @@ $(document).ready(function () {
                                 return id;
                             })
                             .attr('dy', 60)
-                            .data(datafirstChild[isB].attr[0][attr[j]])
                             .on("click", function (d) {
                                 let url;
 
@@ -304,10 +303,22 @@ $(document).ready(function () {
                         d3.select(this).selectAll('tspan').attr("x", parentXValue);
                         d3.select(this).selectAll('tspan').attr("y", parseInt(parentYValue) + 50);
                     })
+                // d3.selectAll('.tspanMore' + root[iB].children[isB].id)
+                //     .each(function (d, i) {
+                //         let parentValueID = d3.select(this).attr('id');
+                //         console.log(parentValueID);
+                //         let parentXValue = d3.selectAll('.' + parentValueID).select('tspan').attr('x');
+                //         let parentYValue = d3.selectAll('.' + parentValueID).select('tspan').attr('y');
+                //
+                //         d3.select(this).attr("x", parentXValue);
+                //         d3.select(this).attr("y", parseInt(parentYValue) + 10);
+                //         console.log(parentXValue);
+                //         console.log(parentYValue);
+                //     })
             })
         }
 
-        function wrapLabel(text, width, top) {
+        function wrapLabel(text, width, lineheight, top) {
             text.each(function () {
                 let textElement = d3.select(this); // d3 text element
                 const text = textElement.text(); // actual text
@@ -334,7 +345,7 @@ $(document).ready(function () {
                         tspan = textElement.append("tspan")
                             .attr('class', 'tspan')
 
-                            .attr("dy", ++lineNumber + "em")
+                            .attr("dy", ++lineNumber + lineheight + "em")
                             .text(word);
                         if (top==true)
                         {
