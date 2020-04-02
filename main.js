@@ -15,9 +15,13 @@ $(document).ready(function () {
         .attr("width", '1500')
         .attr("height", h)
 
+        
+    appendGradients(svg);
+
+
     let currentNode;
     let currentId;
-    //localStorage.clear();
+    localStorage.clear();
     if (localStorage.getItem("currentNode") === null) {
         localStorage.setItem('currentNode', 'topics');
         localStorage.setItem('currentId', 'Blended-Learning');
@@ -66,17 +70,16 @@ $(document).ready(function () {
             groupsChild.append('rect')
                 .attr("x", 400)
                 .attr("y", 300)
-                .attr("rx", 15)
-                .attr("ry", 15)
+                .attr("rx", 30)
+                .attr("ry", 20)
                 .attr("width", 100)
                 .attr("height", 100)
-                .style("fill", function (d, i) {
-                    return root[iB].color;
-                })
+                .attr("class", "mainRect")
+                .style("fill", 'url(#' + root[iB].name + ')')
 
             groupsChild.append('text')
                 .attr("class", "childRectText childRectText" + iB)
-                .attr("x", 540)
+                .attr("x", 520)
                 .attr("y", 360)
                 .text(function (d) {
                     return d.title
@@ -99,7 +102,7 @@ $(document).ready(function () {
                             .append("rect")
                             .attr("width", 60)
                             .attr("height", 60)
-                            .attr("rx", 10)
+                            .attr("rx", 15)
                             .attr("ry", 10)
                             .attr("class", "subchildRect subchildRect" + root[iB].children[isB].id)
                             .attr("id", function (data, i) {
@@ -114,16 +117,8 @@ $(document).ready(function () {
                                 let parentYValue = d3.select(this.parentNode).select('.childRect').attr("y");
                                 return parentYValue;
                             })
-
-                            .style('fill', function (d) {
-                                let color;
-                                $.grep(root[j].children, function (e) {
-                                    if (d === e.id) {
-                                        color = root[j].color;
-                                    }
-                                });
-                                return color;
-                            }).on("click", function (d) {
+                            .attr('fill','url(#' + getCategoryName(j,d,root) +')')
+                            .on("click", function (d) {
                             let TitleValueID = d3.select(this).attr('id');
                             d3.selectAll(".description").classed('fadeout', 'false');
                             d3.selectAll(".description").classed('fadeout', 'true');
@@ -347,4 +342,36 @@ $(document).ready(function () {
         }
 
     });
+
+    function getCategoryName(j,d, root) {
+       return root[j].name;
+    }
+    
+    function getColor(j, d, root) {
+        let color;
+        $.grep(root[j].children, function (e) {
+            if (d === e.id) {
+                color = root[j].color;
+            }
+            return color;
+        });
+    }
+
+    function appendGradients(svg) {
+        let def = svg.append('defs');
+        let gradients = def.append('linearGradient').attr('id',"topics").attr('x1','0%').attr('y1','0%').attr('x2','100%').attr('y2','0%');
+        gradients.append('stop').attr('offset','0%').attr('class',"topics" + "_a")
+        gradients.append('stop').attr('offset','50%').attr('class',"topics" + "_b");
+        gradients.append('stop').attr('offset','100%').attr('class',"topics" + "_c");
+
+        gradients = def.append('linearGradient').attr('id',"scenarios").attr('x1','0%').attr('y1','0%').attr('x2','100%').attr('y2','0%');
+        gradients.append('stop').attr('offset','0%').attr('class',"scenarios" + "_a")
+        gradients.append('stop').attr('offset','50%').attr('class',"scenarios" + "_b");
+        gradients.append('stop').attr('offset','100%').attr('class',"scenarios" + "_c");
+
+        gradients = def.append('linearGradient').attr('id',"tools").attr('x1','0%').attr('y1','0%').attr('x2','100%').attr('y2','0%');
+        gradients.append('stop').attr('offset','0%').attr('class',"tools" + "_a")
+        gradients.append('stop').attr('offset','50%').attr('class',"tools" + "_b");
+        gradients.append('stop').attr('offset','100%').attr('class',"tools" + "_c");
+    }
 });
