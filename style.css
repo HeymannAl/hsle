@@ -50,11 +50,13 @@ text tspan {
 }
 
 .fadein, .fadeout {
-    opacity: 0;
     -moz-transition: opacity 0.4s ease-in-out;
     -o-transition: opacity 0.4s ease-in-out;
     -webkit-transition: opacity 0.4s ease-in-out;
     transition: opacity 0.4s ease-in-out;
+}
+.fadeout {
+    opacity: 0;
 }
 
 .fadein {
@@ -70,7 +72,7 @@ text tspan {
 /*float{animation: blink 0.3s infinite;}*/
 
 /*Styling elements*/
-.tspanMore {
+.desc {
     text-decoration: underline;
     cursor:pointer;
 }
