@@ -217,11 +217,15 @@ $(document).ready(function () {
                                 });
                                 return title;
                             }).call(wrapLabel, 200, 0, false)
+
                         descrGroup.insert("tspan")
                             .text('...')
                             .attr("class", function (data, i) {
-                                return 'tspanMore'+root[iB].children[isB].id
+                                return 'tspanMore tspanMore'+root[iB].children[isB].id
                             })
+
+
+
                         descrGroup.insert("tspan")
                             .text('mehr Informationen')
                             .attr("class", function (data, i) {
@@ -281,7 +285,21 @@ $(document).ready(function () {
                             .selectAll('.tspan').filter(function (d, i, j) {
                             return i >= 3;
                         }).remove();
+                        d3.selectAll('.tspanMore').attr("dy", function () {
+                            // let tspanXValue = d3.select(this.previousSibling).select('.childRect').attr("cx");
+                            let tspanYValue = d3.select(this.previousElementSibling).attr("dy");
+                            tspanYValue=tspanYValue.slice(0, -2);
+                            tspanYValue = parseInt(tspanYValue) + 0.5 + 'em';
+                            console.log(tspanYValue);
+                            return tspanYValue;
 
+                        })
+                        // d3.selectAll('.tspanMore').attr("dx", function () {
+                        //     // let tspanXValue = d3.select(this.previousSibling).select('.childRect').attr("cx");
+                        //
+                        //     return 100;
+                        //
+                        // })
                     }
                 }
 
@@ -350,6 +368,7 @@ $(document).ready(function () {
                         tspan = textElement.append("tspan")
                             .attr('class', 'tspan')
                             .attr("dy", ++lineNumber + lineheight + "em")
+                            .attr('dx', 0)
                             .text(word);
                         if (top==true)
                         {
