@@ -225,7 +225,6 @@ $(document).ready(function () {
                             })
 
 
-
                         descrGroup.insert("tspan")
                             .text('mehr Informationen')
                             .attr("class", function (data, i) {
@@ -289,17 +288,10 @@ $(document).ready(function () {
                             // let tspanXValue = d3.select(this.previousSibling).select('.childRect').attr("cx");
                             let tspanYValue = d3.select(this.previousElementSibling).attr("dy");
                             tspanYValue=tspanYValue.slice(0, -2);
-                            tspanYValue = parseInt(tspanYValue) + 0.5 + 'em';
+                            tspanYValue = parseInt(tspanYValue) + 'em';
                             console.log(tspanYValue);
                             return tspanYValue;
-
                         })
-                        // d3.selectAll('.tspanMore').attr("dx", function () {
-                        //     // let tspanXValue = d3.select(this.previousSibling).select('.childRect').attr("cx");
-                        //
-                        //     return 100;
-                        //
-                        // })
                     }
                 }
 
@@ -353,8 +345,6 @@ $(document).ready(function () {
                     .append("tspan")
                     .attr('class', 'tspan')
                     .attr('dx', 0)
-
-
                 while (word = words.shift()) { // get first element and remove it from array
                     line.push(word);
                     tspan.text(line.join(" ")); // set new text to tspan
@@ -379,7 +369,11 @@ $(document).ready(function () {
                 }
             });
         }
+        d3.selectAll('.tspanMore').attr("x", function () {
+            // let tspanXValue = d3.select(this.previousSibling).select('.childRect').attr("cx");
+            return null;
 
+        })
     });
 
     function getCategoryName(j,d, root) {
